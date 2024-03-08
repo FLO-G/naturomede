@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('families', function (Blueprint $table) {
+        Schema::create('pathos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('group_id');
+            $table->string('defintion');
+            $table->string('cause');
+            $table->string('complication');
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('families');
+        Schema::dropIfExists('pathos');
     }
 };
