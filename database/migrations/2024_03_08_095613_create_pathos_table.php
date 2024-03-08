@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pathos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('defintion');
+            $table->string('definition');
             $table->string('cause');
             $table->string('complication');
         });

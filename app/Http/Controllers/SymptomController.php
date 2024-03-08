@@ -12,7 +12,7 @@ class SymptomController extends Controller
      */
     public function index()
     {
-        //
+        return Symptom::with('pathos', 'symptoms')->get()->toJson();
     }
 
     /**

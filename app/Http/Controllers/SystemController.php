@@ -12,7 +12,7 @@ class SystemController extends Controller
      */
     public function index()
     {
-        //
+        return System::with('pathos', 'symptoms')->get()->toJson();
     }
 
     /**

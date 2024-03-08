@@ -12,6 +12,8 @@ class System extends Model
 
     public $timestamps = false;
 
+    protected $fillable = ['name'];
+
     public function symptoms(): BelongsToMany
     {
         return $this->belongsToMany(Symptom::class, 'symptom_systems');
@@ -21,5 +23,5 @@ class System extends Model
     {
         return $this->belongsToMany(Patho::class, 'patho_systems');
     }
-    
+
 }

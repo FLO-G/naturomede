@@ -14,8 +14,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('symptomp_systems', function (Blueprint $table) {
-            $table->foreignIdFor(Symptom::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(System::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Symptom::class);
+            $table->foreignIdFor(System::class);
             $table->primary(['symptom_id', 'system_id']);
         });
     }

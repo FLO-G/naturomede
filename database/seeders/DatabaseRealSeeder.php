@@ -3,13 +3,19 @@
 namespace Database\Seeders;
 
 use App\Models\Aroma;
-use App\Models\AromaFamily;
-use App\Models\Family;
-use App\Models\FamilyProperty;
 use App\Models\Group;
+use App\Models\Patho;
+use App\Models\Family;
+use App\Models\System;
+use App\Models\Symptom;
 use App\Models\Property;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\AromaFamily;
+use App\Models\PathoSymptom;
+use App\Models\FamilyProperty;
+use App\Models\PathoSystem;
+use App\Models\SymptompSystem;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseRealSeeder extends Seeder
 {
@@ -136,54 +142,129 @@ class DatabaseRealSeeder extends Seeder
         }
 
 
-        // $systems = [
-        //     ['name' => 'Cardio-vasculaire'],
-        //     ['name' => 'Cutanée'],
-        //     ['name' => 'Digestif'],
-        //     ['name' => 'Endocrinien'],
-        //     ['name' => 'Génito-urinaire'],
-        //     ['name' => 'Lymphatique'],
-        //     ['name' => 'Nerveux'],
-        //     ['name' => 'Ostéo-articulaire'],
-        //     ['name' => 'Reproducteur'],
-        //     ['name' => 'Respiratoire'],
-        // ];
+        $systems = [
+            ['name' => 'Cardio-vasculaire'],
+            ['name' => 'Cutanée'],
+            ['name' => 'Digestif'],
+            ['name' => 'Endocrinien'],
+            ['name' => 'Génito-urinaire'],
+            ['name' => 'Lymphatique'],
+            ['name' => 'Nerveux'],
+            ['name' => 'Ostéo-articulaire'],
+            ['name' => 'Reproducteur'],
+            ['name' => 'Respiratoire'],
+        ];
 
-        // foreach ($systems as $system)
-        // {
-        //     $sys = new System($system);
-        //     $sys->save();
-        // }
+        foreach ($systems as $system)
+        {
+            $sys = new System($system);
+            $sys->save();
+        }
 
-        // $symptoms = [
-        //     ['name' => 'Crampes'],
-        //     ['name' => 'Déformation de l\'articulation'],
-        //     ['name' => 'Douleurs articulaires'],
-        //     ['name' => 'Douleurs spasmodique'],
-        //     ['name' => 'Impotence fonctionnelle'],
-        //     ['name' => 'Palpitations'],
-        //     ['name' => 'Prurit'],
-        //     ['name' => 'Spasmophilie'],
-        //     ['name' => 'Toux'],
-        //     ['name' => 'Troubles du sommeil'],
-        // ];
+        $symptoms = [
+            ['name' => 'Crampes'],
+            ['name' => 'Déformation de l\'articulation'],
+            ['name' => 'Douleurs articulaires'],
+            ['name' => 'Douleurs spasmodique'],
+            ['name' => 'Impotence fonctionnelle'],
+            ['name' => 'Palpitations'],
+            ['name' => 'Prurit'],
+            ['name' => 'Spasmophilie'],
+            ['name' => 'Toux'],
+            ['name' => 'Troubles du sommeil'],
+        ];
 
-        // foreach ($symptoms as $symptom)
-        // {
-        //     $sym = new Symptom($symptom);
-        //     $sym->save();
-        // }
+        foreach ($symptoms as $symptom)
+        {
+            $sym = new Symptom($symptom);
+            $sym->save();
+        }
 
-        // $pathos = [
-        //     ['name' => 'Dystonie Neuro-Végétative', 'definition' => 'Trouble de l\'excitabilité musculaire. Déséquilibre du système neuro-végétatif qui va toucher les différents muscles du corps et provoquer différents symptômes.'],
-        //     ['name' => 'Arthrose', 'definition' => 'Usure du cartilage et phénomènes inflammatoires entrainant des douleurs persistantes au niveau articulaire.']
-        // ];
+        $pathos = [
+            ['name' => 'Dystonie Neuro-Végétative', 'definition' => 'Trouble de l\'excitabilité musculaire. Déséquilibre du système neuro-végétatif qui va toucher les différents muscles du corps et provoquer différents symptômes.', 'cause' => 'smoking', 'complication' => 'heart attacks'],
+            ['name' => 'Arthrose', 'definition' => 'Déséquilibre du système neuro-végétatif qui va toucher les différents.', 'cause' => 'smoking2', 'complication' => 'heart attacks2'],
+            ['name' => 'ChaumersZone', 'definition' => 'Trouble de l\'excitabilité musculaire. Déséquilibre du système neuro-végétatif qui va toucher les différents muscles du corps et provoquer différents symptômes.', 'cause' => 'smoking3', 'complication' => 'heart attacks3'],
+        ];
 
-        // foreach ($pathos as $patho)
-        // {
-        //     $pat = new Patho($patho);
-        //     $pat->save();
-        // }
+        foreach ($pathos as $patho) {
+            $newPatho = new Patho($patho);
+            $newPatho->save();
+
+          }
+
+          
+        $pathoSymptoms = [
+            [
+                'patho_id' => 1,
+                'symptom_id' => 5
+            ],
+            [
+                'patho_id' => 2,
+                'symptom_id' => 4
+            ],
+            [
+                'patho_id' => 3,
+                'symptom_id' => 6
+            ],
+            [
+                'patho_id' => 5,
+                'symptom_id' => 7
+            ],
+        ];
+
+
+        foreach ($pathoSymptoms as $pathoSymptom) {
+            PathoSymptom::create($pathoSymptom);
+        }
+
+
+        $symptomSystems = [
+            [
+                'system_id' => 1,
+                'symptom_id' => 3
+            ],
+            [
+                'system_id' => 2,
+                'symptom_id' => 4
+            ],
+            [
+                'system_id' => 3,
+                'symptom_id' => 5
+            ],
+            [
+                'system_id' => 4,
+                'symptom_id' => 6
+            ],
+        ];
+
+        foreach ($symptomSystems as $symptomSystem) {
+            SymptompSystem::create($symptomSystem);
+        }
+
+
+        $pathoSystems = [
+            [
+                'patho_id' => 1,
+                'system_id' => 3
+            ],
+            [
+                'patho_id' => 2,
+                'system_id' => 4
+            ],
+            [
+                'patho_id' => 3,
+                'system_id' => 5
+            ],
+            [
+                'patho_id' => 4,
+                'system_id' => 6
+            ],
+        ];
+
+        foreach ($pathoSystems as $pathoSystem) {
+            PathoSystem::create($pathoSystem);
+        }
+
 
         // $herbals = [
         //     ['name' => 'Ashwagandha', 'property' => 'Adaptogène stress'],

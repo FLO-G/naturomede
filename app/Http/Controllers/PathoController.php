@@ -12,8 +12,10 @@ class PathoController extends Controller
      */
     public function index()
     {
-        //
+        
+        return Patho::with('symptoms', 'systems')->get()->toJson();
     }
+
 
     /**
      * Show the form for creating a new resource.
