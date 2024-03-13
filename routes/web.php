@@ -41,3 +41,5 @@ require __DIR__.'/auth.php';
 
 Route::resource('aromas', AromaController::class);
 Route::resource('pathos', PathoController::class);
+// Route::get('aromas/{aroma}', [AromaController::class, 'show']);
+// Route::get('/aromas/{aroma}', 'AromaController@show')->name('Aroma.show');
