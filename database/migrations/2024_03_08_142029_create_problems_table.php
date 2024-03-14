@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('aromas', function (Blueprint $table) {
+        Schema::create('problems', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->foreignId('client_id')->constrained()->cascadeOnDelete();
+            $table->morphs('problem');
         });
     }
 
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('aromas');
+        Schema::dropIfExists('problems');
     }
 };

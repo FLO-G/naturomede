@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aroma;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AromaController extends Controller
 {
@@ -12,7 +13,11 @@ class AromaController extends Controller
      */
     public function index()
     {
-        return Aroma::with(['families' => ['group', 'properties']])->get()->toJson();
+
+        $aromas = Aroma::with(['families' => ['group', 'properties']])->get();
+
+        return Inertia::render('Aroma/Index', ['aromas' => $aromas]);
+        
     }
 
     /**
@@ -20,7 +25,7 @@ class AromaController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Aroma/Create');
     }
 
     /**
@@ -28,7 +33,17 @@ class AromaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $aroma = new Aroma();
+
+        $aroma->name = $validated['name'];
+
+        $aroma->save();
+
+        return $this->index();
     }
 
     /**
@@ -36,7 +51,8 @@ class AromaController extends Controller
      */
     public function show(Aroma $aroma)
     {
-        //
+        $aroma->load(['families' => ['group', 'properties']]);
+        return Inertia::render('Aroma/Show', ['aroma' => $aroma]);
     }
 
     /**
@@ -44,7 +60,7 @@ class AromaController extends Controller
      */
     public function edit(Aroma $aroma)
     {
-        //
+        return Inertia::render('Aroma/Edit', ['aroma' => $aroma]);
     }
 
     /**
@@ -52,7 +68,15 @@ class AromaController extends Controller
      */
     public function update(Request $request, Aroma $aroma)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $aroma->name = $request->name;
+
+        $aroma ->save();
+
+        return $this->index();
     }
 
     /**
@@ -60,6 +84,8 @@ class AromaController extends Controller
      */
     public function destroy(Aroma $aroma)
     {
-        //
+        $aroma->delete();
+
+        return $this->index()->with('message', 'Aroma delete successfully');
     }
 }

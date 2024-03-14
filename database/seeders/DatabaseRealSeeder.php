@@ -4,10 +4,13 @@ namespace Database\Seeders;
 
 use App\Models\Aroma;
 use App\Models\AromaFamily;
+use App\Models\Client;
 use App\Models\Family;
 use App\Models\FamilyProperty;
 use App\Models\Group;
+use App\Models\Patho;
 use App\Models\Property;
+use App\Models\Symptom;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -155,35 +158,44 @@ class DatabaseRealSeeder extends Seeder
         //     $sys->save();
         // }
 
-        // $symptoms = [
-        //     ['name' => 'Crampes'],
-        //     ['name' => 'Déformation de l\'articulation'],
-        //     ['name' => 'Douleurs articulaires'],
-        //     ['name' => 'Douleurs spasmodique'],
-        //     ['name' => 'Impotence fonctionnelle'],
-        //     ['name' => 'Palpitations'],
-        //     ['name' => 'Prurit'],
-        //     ['name' => 'Spasmophilie'],
-        //     ['name' => 'Toux'],
-        //     ['name' => 'Troubles du sommeil'],
-        // ];
+        $symptoms = [
+            ['name' => 'Crampes'],
+            ['name' => 'Déformation de l\'articulation'],
+            ['name' => 'Douleurs articulaires'],
+            ['name' => 'Douleurs spasmodique'],
+            ['name' => 'Impotence fonctionnelle'],
+            ['name' => 'Palpitations'],
+            ['name' => 'Prurit'],
+            ['name' => 'Spasmophilie'],
+            ['name' => 'Toux'],
+            ['name' => 'Troubles du sommeil'],
+        ];
 
-        // foreach ($symptoms as $symptom)
-        // {
-        //     $sym = new Symptom($symptom);
-        //     $sym->save();
-        // }
+        foreach ($symptoms as $symptom)
+        {
+            $sym = new Symptom($symptom);
+            $sym->save();
+        }
 
-        // $pathos = [
-        //     ['name' => 'Dystonie Neuro-Végétative', 'definition' => 'Trouble de l\'excitabilité musculaire. Déséquilibre du système neuro-végétatif qui va toucher les différents muscles du corps et provoquer différents symptômes.'],
-        //     ['name' => 'Arthrose', 'definition' => 'Usure du cartilage et phénomènes inflammatoires entrainant des douleurs persistantes au niveau articulaire.']
-        // ];
+        $pathos = [
+            ['name' => 'Dystonie Neuro-Végétative', 'definition' => 'Trouble de l\'excitabilité musculaire. Déséquilibre du système neuro-végétatif qui va toucher les différents muscles du corps et provoquer différents symptômes.', 'cause' => 'Manque de quelquechose', 'complication' => 'Dépression'],
+            ['name' => 'Arthrose', 'definition' => 'Usure du cartilage et phénomènes inflammatoires entrainant des douleurs persistantes au niveau articulaire.', 'cause' => 'Acidité de l\'organisme', 'complication' => 'Douleur des articulations (pour Sary)']
+        ];
 
-        // foreach ($pathos as $patho)
-        // {
-        //     $pat = new Patho($patho);
-        //     $pat->save();
-        // }
+        foreach ($pathos as $patho)
+        {
+            $pat = new Patho($patho);
+            $pat->save();
+        }
+
+        $ids = range(1, 10);
+        Client::factory()->count(10)->create()->each(function ($client) use($ids) {
+            shuffle($ids);
+            $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
+            shuffle($ids);
+            $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
+        });
+        
 
         // $herbals = [
         //     ['name' => 'Ashwagandha', 'property' => 'Adaptogène stress'],
