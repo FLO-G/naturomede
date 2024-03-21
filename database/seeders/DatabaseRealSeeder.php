@@ -197,28 +197,35 @@ class DatabaseRealSeeder extends Seeder
             Gender::create($gender);
         }
 
+        // $genders = Gender::pluck('id'); // Récupère les IDs de tous les genres disponibles dans la base de données
+
+        // Client::factory()->count(10)->create()->each(function ($client) use ($genders) {
+        //     $client->gender_id = $genders->random(); // Attribue un genre aléatoire à chaque client
+        //     $client->save();
+        // });
+
+
+        // $ids = range(1, 10);
+        // Client::each(function ($client) use($ids) {
+        //     shuffle($ids);
+        //     $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
+        //     shuffle($ids);
+        //     $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
+            
+        // });
+
         $genders = Gender::pluck('id'); // Récupère les IDs de tous les genres disponibles dans la base de données
 
-        Client::factory()->count(10)->create()->each(function ($client) use ($genders) {
-            $client->gender_id = $genders->random(); // Attribue un genre aléatoire à chaque client
-            $client->save();
-            // shuffle($ids);
-            // $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
-            // shuffle($ids);
-            // $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
-        });
-
-
         $ids = range(1, 10);
-        Client::each(function ($client) use($ids) {
+
+        Client::factory()->count(10)->create()->each(function ($client) use ($genders, $ids) {
+            $client->gender_id = $genders->random(); // Attribue un genre aléatoire à chaque client
             shuffle($ids);
             $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
             shuffle($ids);
             $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
-            
+            $client->save();
         });
-
-    
         
 
         // $herbals = [
