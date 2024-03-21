@@ -189,23 +189,36 @@ class DatabaseRealSeeder extends Seeder
             $pat->save();
         }
 
+        $genders = [
+            ['name' => 'gender 1'],
+            ['name' => 'gender 2'],
+        ];
+        foreach ($genders as $gender) {
+            Gender::create($gender);
+        }
+
+        $genders = Gender::pluck('id'); // Récupère les IDs de tous les genres disponibles dans la base de données
+
+        Client::factory()->count(10)->create()->each(function ($client) use ($genders) {
+            $client->gender_id = $genders->random(); // Attribue un genre aléatoire à chaque client
+            $client->save();
+            // shuffle($ids);
+            // $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
+            // shuffle($ids);
+            // $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
+        });
+
+
         $ids = range(1, 10);
-        Client::factory()->count(10)->create()->each(function ($client) use($ids) {
+        Client::each(function ($client) use($ids) {
             shuffle($ids);
             $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
             shuffle($ids);
             $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
+            
         });
 
-        $genders = [
-            ['gender' => 'gender 1'],
-            ['gender' => 'gender 2'],
-         
-        ];
-
-        foreach ($genders as $gender) {
-            Gender::create($gender);
-        }
+    
         
 
         // $herbals = [
