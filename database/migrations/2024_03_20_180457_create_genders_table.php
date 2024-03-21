@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('genders', function (Blueprint $table) {
-            $table->id()->default(1);
+            $table->id();
             $table->string('name');
         });
     }
