@@ -6,20 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-class Problem extends Model
+class Treatable extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
-    public function problems(): MorphTo
-    {
-        return $this->morphTo();
-    }
+    
+   public function treatables(): MorphTo
+   {
+       return $this->morphTo();
+   }
 
-    public function client(): BelongsTo
-    {
-        return $this->belongsTo(Client::class);
-    }
+   public function therapys(): MorphToMany
+   {
+       return $this->morphToMany(Client::class, 'therapys');
+   }
 }

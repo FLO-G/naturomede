@@ -13,18 +13,38 @@ class Patho extends Model
 
     public $timestamps = false;
 
-    // public function symptoms(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Symptom::class, 'patho_symptoms');
-    // }
+    public function symptoms(): BelongsToMany
+    {
+        return $this->belongsToMany(Symptom::class, 'patho_symptoms');
+    }
 
-    // public function systems(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(System::class, 'patho_systems');
-    // }
+    public function systems(): BelongsToMany
+    {
+        return $this->belongsToMany(System::class, 'patho_systems');
+    }
 
     public function problems(): MorphToMany
     {
         return $this->morphToMany(Client::class, 'problems');
+    }
+
+    public function herbals()
+    {
+        return $this->morphedByMany(Herbal::class, 'treatable', 'tretables');
+    }
+
+    public function nutris()
+    {
+        return $this->morphedByMany(Nutri::class, 'treatable', 'tretables');
+    }
+
+    public function measureHds()
+    {
+        return $this->morphedByMany(MeasureHd::class, 'treatable', 'tretables');
+    }
+
+    public function aromas()
+    {
+        return $this->morphedByMany(Aroma::class, 'treatable', 'tretables');
     }
 }

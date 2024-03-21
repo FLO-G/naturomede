@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Problem extends Model
+class Therapy extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
-    public function problems(): MorphTo
+    public function therapys(): MorphTo
     {
         return $this->morphTo();
     }

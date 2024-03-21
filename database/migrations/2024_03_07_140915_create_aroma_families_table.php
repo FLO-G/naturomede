@@ -14,8 +14,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('aroma_families', function (Blueprint $table) {
-            $table->foreignIdFor(Aroma::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Family::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Aroma::class);
+            $table->foreignIdFor(Family::class);
             $table->primary(['aroma_id', 'family_id']);
         });
     }

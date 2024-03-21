@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('aromas', function (Blueprint $table) {
+        Schema::create('measure_hds', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('latin_name');
+            $table->string('propertys');
         });
     }
 
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('aromas');
+        Schema::dropIfExists('measure_hds');
     }
 };

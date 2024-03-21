@@ -14,8 +14,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('family_properties', function (Blueprint $table) {
-            $table->foreignIdFor(Family::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Property::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Family::class);
+            $table->foreignIdFor(Property::class);
             $table->primary(['family_id', 'property_id']);
         });
     }

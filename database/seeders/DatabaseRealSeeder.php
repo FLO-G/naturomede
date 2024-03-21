@@ -7,6 +7,7 @@ use App\Models\AromaFamily;
 use App\Models\Client;
 use App\Models\Family;
 use App\Models\FamilyProperty;
+use App\Models\Gender;
 use App\Models\Group;
 use App\Models\Patho;
 use App\Models\Property;
@@ -195,6 +196,16 @@ class DatabaseRealSeeder extends Seeder
             shuffle($ids);
             $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
         });
+
+        $genders = [
+            ['gender' => 'gender 1'],
+            ['gender' => 'gender 2'],
+         
+        ];
+
+        foreach ($genders as $gender) {
+            Gender::create($gender);
+        }
         
 
         // $herbals = [
