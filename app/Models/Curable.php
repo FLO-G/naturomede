@@ -18,11 +18,14 @@ class Curable extends Model
     {
         return $this->morphTo();
     }
-   
+
     public function therapys(): MorphToMany
     {
         return $this->morphToMany(Client::class, 'therapys');
     }
 
-   
+    public function symptom(): BelongsTo
+    {
+        return $this->belongsTo(Symptom::class);
+    }
 }

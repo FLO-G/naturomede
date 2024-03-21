@@ -38,7 +38,7 @@ class Patho extends Model
         return $this->morphedByMany(Nutri::class, 'treatable', 'tretables');
     }
 
-    public function measureHds()
+    public function measure()
     {
         return $this->morphedByMany(MeasureHd::class, 'treatable', 'tretables');
     }

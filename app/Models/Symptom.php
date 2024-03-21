@@ -38,7 +38,7 @@ class Symptom extends Model
         return $this->morphedByMany(Nutri::class, 'curable', 'curables');
     }
 
-    public function measureHds()
+    public function measure()
     {
         return $this->morphedByMany(MeasureHd::class, 'curable', 'curables');
     }
