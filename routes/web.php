@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AromaController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Aroma;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
