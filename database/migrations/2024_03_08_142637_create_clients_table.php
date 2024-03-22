@@ -16,8 +16,6 @@ return new class extends Migration
         $table->string('firstname');
         $table->string('lastname');
         $table->string('email');
-        // $table->foreignId('gender_id');
-        $table->foreignId('gender_id')->default(0);
         });
     }
 

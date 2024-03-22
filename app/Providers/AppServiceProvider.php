@@ -32,10 +32,6 @@ class AppServiceProvider extends ServiceProvider
         Relation::enforceMorphMap([
             'Patho' => Patho::class,
             'Symptom' => Symptom::class,
-            'Herbal' => Herbal::class,
-            'Nutri' => Nutri::class,
-            'Measure' => MeasureHd::class,
-            'Aroma' => Aroma::class,
         ]);
     }
 }
