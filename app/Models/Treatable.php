@@ -20,9 +20,9 @@ class Treatable extends Model
         return $this->morphTo();
     }
 
-    public function therapys(): MorphToMany
+    public function therapies(): MorphToMany
     {
-        return $this->morphToMany(Client::class, 'therapys');
+        return $this->morphToMany(Client::class, 'therapies');
     }
 
     // Récupérer foreign id PATHO

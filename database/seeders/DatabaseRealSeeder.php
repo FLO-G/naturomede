@@ -163,76 +163,6 @@ class DatabaseRealSeeder extends Seeder
         //     $sys = new System($system);
         //     $sys->save();
         // }
-
-        $symptoms = [
-            ['name' => 'Crampes'],
-            ['name' => 'Déformation de l\'articulation'],
-            ['name' => 'Douleurs articulaires'],
-            ['name' => 'Douleurs spasmodique'],
-            ['name' => 'Impotence fonctionnelle'],
-            ['name' => 'Palpitations'],
-            ['name' => 'Prurit'],
-            ['name' => 'Spasmophilie'],
-            ['name' => 'Toux'],
-            ['name' => 'Troubles du sommeil'],
-        ];
-
-        foreach ($symptoms as $symptom)
-        {
-            $sym = new Symptom($symptom);
-            $sym->save();
-        }
-
-        $pathos = [
-            ['name' => 'Dystonie Neuro-Végétative', 'definition' => 'Trouble de l\'excitabilité musculaire. Déséquilibre du système neuro-végétatif qui va toucher les différents muscles du corps et provoquer différents symptômes.', 'cause' => 'Manque de quelquechose', 'complication' => 'Dépression'],
-            ['name' => 'Arthrose', 'definition' => 'Usure du cartilage et phénomènes inflammatoires entrainant des douleurs persistantes au niveau articulaire.', 'cause' => 'Acidité de l\'organisme', 'complication' => 'Douleur des articulations (pour Sary)']
-        ];
-
-        foreach ($pathos as $patho)
-        {
-            $pat = new Patho($patho);
-            $pat->save();
-        }
-
-        $genders = [
-            ['name' => 'gender 1'],
-            ['name' => 'gender 2'],
-        ];
-        foreach ($genders as $gender) {
-            Gender::create($gender);
-        }
-
-        // $genders = Gender::pluck('id'); // Récupère les IDs de tous les genres disponibles dans la base de données
-
-        // Client::factory()->count(10)->create()->each(function ($client) use ($genders) {
-        //     $client->gender_id = $genders->random(); // Attribue un genre aléatoire à chaque client
-        //     $client->save();
-        // });
-
-
-        // $ids = range(1, 10);
-        // Client::each(function ($client) use($ids) {
-        //     shuffle($ids);
-        //     $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
-        //     shuffle($ids);
-        //     $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
-            
-        // });
-
-        $genders = Gender::pluck('id'); // Récupère les IDs de tous les genres disponibles dans la base de données
-
-        $ids = range(1, 10);
-
-        Client::factory()->count(10)->create()->each(function ($client) use ($genders, $ids) {
-            $client->gender_id = $genders->random(); // Attribue un genre aléatoire à chaque client
-            shuffle($ids);
-            $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
-            shuffle($ids);
-            $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
-            $client->save();
-        });
-        
-
         $herbals = [
             ['name' => 'Ashwagandha'],
             ['name' => 'Aubépine'],
@@ -289,6 +219,63 @@ class DatabaseRealSeeder extends Seeder
             $msr->save();
         }
 
+        $symptoms = [
+            ['name' => 'Crampes'],
+            ['name' => 'Déformation de l\'articulation'],
+            ['name' => 'Douleurs articulaires'],
+            ['name' => 'Douleurs spasmodique'],
+            ['name' => 'Impotence fonctionnelle'],
+            ['name' => 'Palpitations'],
+            ['name' => 'Prurit'],
+            ['name' => 'Spasmophilie'],
+            ['name' => 'Toux'],
+            ['name' => 'Troubles du sommeil'],
+        ];
+
+        foreach ($symptoms as $symptom)
+        {
+            $sym = new Symptom($symptom);
+            $sym->save();
+        }
+
+        $pathos = [
+            ['name' => 'Dystonie Neuro-Végétative', 'definition' => 'Trouble de l\'excitabilité musculaire. Déséquilibre du système neuro-végétatif qui va toucher les différents muscles du corps et provoquer différents symptômes.', 'cause' => 'Manque de quelquechose', 'complication' => 'Dépression'],
+            ['name' => 'Arthrose', 'definition' => 'Usure du cartilage et phénomènes inflammatoires entrainant des douleurs persistantes au niveau articulaire.', 'cause' => 'Acidité de l\'organisme', 'complication' => 'Douleur des articulations (pour Sary)']
+        ];
+
+        foreach ($pathos as $patho)
+        {
+            $pat = new Patho($patho);
+            $pat->save();
+        }
+
+        $genders = [
+            ['name' => 'gender 1'],
+            ['name' => 'gender 2'],
+        ];
+        foreach ($genders as $gender) {
+            Gender::create($gender);
+        }
+
+        // $genders = Gender::pluck('id'); // Récupère les IDs de tous les genres disponibles dans la base de données
+
+        // Client::factory()->count(10)->create()->each(function ($client) use ($genders) {
+        //     $client->gender_id = $genders->random(); // Attribue un genre aléatoire à chaque client
+        //     $client->save();
+        // });
+
+
+        // $ids = range(1, 10);
+        // Client::each(function ($client) use($ids) {
+        //     shuffle($ids);
+        //     $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
+        //     shuffle($ids);
+        //     $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
+            
+        // });
+        
+        $ids = range(1, 10);
+        
         Patho::each(function ($patho) use($ids){
             shuffle($ids);
             $patho->herbals()->attach(array_slice($ids, 0, rand(1, 4)));
@@ -299,6 +286,20 @@ class DatabaseRealSeeder extends Seeder
             shuffle($ids);
             $patho->aromas()->attach(array_slice($ids, 0, rand(1, 4)));
         });
+
+        $genders = Gender::pluck('id'); // Récupère les IDs de tous les genres disponibles dans la base de données
+
+        Client::factory()->count(10)->create()->each(function ($client) use ($genders, $ids) {
+            $client->gender_id = $genders->random(); // Attribue un genre aléatoire à chaque client
+            shuffle($ids);
+            $client->pathos()->attach(array_slice($ids, 0, rand(1, 4)));
+            shuffle($ids);
+            $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
+            $client->save();
+        });
+        
+
+        
 
 
 

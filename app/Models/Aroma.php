@@ -28,7 +28,7 @@ class Aroma extends Model
 
     public function curables(): MorphToMany
     {
-        return $this->morphToMany(Symptom::class, 'curable');
+        return $this->morphToMany(Symptom::class, 'curables');
     }
 
     public function families(): BelongsToMany
