@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* COLORS */
+  --main-primary: #41844E;
+  --main-primary-lgt: #41844e33;
+
+  --main-secondary: #45879F;
+  --main-secondary-lgt: #45879f33;
+
+  --btn-danger: red;
+}
