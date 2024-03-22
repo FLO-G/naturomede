@@ -10,10 +10,12 @@ use App\Models\FamilyProperty;
 use App\Models\Gender;
 use App\Models\Group;
 use App\Models\Herbal;
+use App\Models\HerbalProperty;
 use App\Models\MeasureHd;
 use App\Models\Nutri;
 use App\Models\Patho;
 use App\Models\Property;
+use App\Models\PropertyHb;
 use App\Models\Symptom;
 use App\Models\System;
 use App\Models\Treatable;
@@ -189,6 +191,46 @@ class DatabaseRealSeeder extends Seeder
         {
             $phyto = new Herbal($herbal);
             $phyto->save();
+        }
+
+        $propertieshb = [
+            ['name' => 'Prop 1'],
+            ['name' => 'Prop 2'],
+            ['name' => 'Prop 3'],
+            ['name' => 'Prop 4'],
+            ['name' => 'Prop 5'],
+        ];
+
+        foreach($propertieshb as $propertyhb)
+        {
+            PropertyHb::create($propertyhb);
+        }
+
+        $herbalproperties = [
+            [
+                'herbal_id' => 1,
+                'property_hb_id' => 5
+            ],
+            [
+                'herbal_id' => 1,
+                'property_hb_id' => 4
+            ],
+            [
+                'herbal_id' => 2,
+                'property_hb_id' => 3
+            ],
+            [
+                'herbal_id' => 3,
+                'property_hb_id' => 5
+            ],
+            [
+                'herbal_id' => 3,
+                'property_hb_id' => 2
+            ],
+        ];
+
+        foreach ($herbalproperties as $herbalproperty) {
+            HerbalProperty::create($herbalproperty);
         }
 
         $measures = [
