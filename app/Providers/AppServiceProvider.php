@@ -3,11 +3,13 @@
 namespace App\Providers;
 
 use App\Models\Aroma;
+use App\Models\Curable;
 use App\Models\Herbal;
 use App\Models\MeasureHd;
 use App\Models\Nutri;
 use App\Models\Patho;
 use App\Models\Symptom;
+use App\Models\Treatable;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -36,6 +38,8 @@ class AppServiceProvider extends ServiceProvider
             'Nutri' => Nutri::class,
             'Measure' => MeasureHd::class,
             'Aroma' => Aroma::class,
+            'Treatable' => Treatable::class,
+            'Curable' => Curable::class,
         ]);
     }
 }
