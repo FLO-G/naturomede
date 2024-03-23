@@ -12,7 +12,7 @@ class Nutri extends Model
 
     public $timestamps = false;
 
-    public function tretables(): MorphToMany
+    public function treatables(): MorphToMany
     {
         return $this->morphToMany(Patho::class, 'treatable');
     }
