@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Nutri;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class NutriController extends Controller
      */
     public function index()
     {
-        //
+        $nutris = Nutri::all();
+        return Inertia::render('Nutri/Index', ['nutris' => $nutris]);
     }
 
     /**
@@ -20,7 +22,7 @@ class NutriController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Nutri/Create');
     }
 
     /**
@@ -28,7 +30,17 @@ class NutriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required'
+        ]);
+
+        $nutri = new Nutri();
+
+        $nutri->name = $validated['name'];
+
+        $nutri->save();
+
+        return $this->index();
     }
 
     /**
@@ -36,7 +48,7 @@ class NutriController extends Controller
      */
     public function show(Nutri $nutri)
     {
-        //
+        return Inertia::render('Nutri/Show', ['nutri' => $nutri]);
     }
 
     /**
@@ -44,7 +56,7 @@ class NutriController extends Controller
      */
     public function edit(Nutri $nutri)
     {
-        //
+        return Inertia::render('Nutri/Edit', ['nutri' => $nutri]);
     }
 
     /**
@@ -52,7 +64,15 @@ class NutriController extends Controller
      */
     public function update(Request $request, Nutri $nutri)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required'
+        ]);
+
+        $nutri->name = $validated['name'];
+
+        $nutri->update();
+
+        return $this->index();
     }
 
     /**
@@ -60,6 +80,7 @@ class NutriController extends Controller
      */
     public function destroy(Nutri $nutri)
     {
-        //
+        $nutri->delete();
+        return $this->index()->with('message', 'Nutri deleted successfully');
     }
 }
