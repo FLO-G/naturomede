@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('treatables', function (Blueprint $table) {
             $table->id();
-            $table->morphs('tretable');
+            $table->morphs('treatable');
             $table->foreignId('patho_id');
            
         });

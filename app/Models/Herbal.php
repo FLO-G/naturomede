@@ -14,11 +14,11 @@ class Herbal extends Model
 
     public function tretables(): MorphToMany
     {
-        return $this->morphToMany(Patho::class, 'treatable');
+        return $this->morphToMany(Patho::class, 'treatables');
     }
 
    public function curables(): MorphToMany
     {
-        return $this->morphToMany(Symptom::class, 'curable');
+        return $this->morphToMany(Symptom::class, 'curables');
     }
 }
