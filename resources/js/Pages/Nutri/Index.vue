@@ -23,6 +23,7 @@
             <tr v-for="nutri in nutris" :key="nutri.id">
               <td class="row" @click="router.visit(route('nutris.show', nutri.id))">
                 {{ nutri.name }}
+                {{ console.log(route('nutris.show', nutri.id)) }}
               </td>
               <td>
                 <Button btn="edit" @click="router.visit(route('nutris.edit', nutri.id))">

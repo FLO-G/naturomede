@@ -23,7 +23,6 @@
   import TextInput from '@/Components/TextInput.vue'
   import PrimaryButton from '@/Components/PrimaryButton.vue'
   import { Head, useForm } from '@inertiajs/vue3'
-  import type { MeasureHd } from '@/Models/measuresHd';
   
   const form = useForm({
     name: '',

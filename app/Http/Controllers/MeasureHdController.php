@@ -13,6 +13,7 @@ class MeasureHdController extends Controller
      */
     public function index()
     {
+        
         $measuresHd = MeasureHd::all();
         return Inertia::render('MeasureHd/Index', ['measuresHd' => $measuresHd]);
     }
@@ -48,10 +49,13 @@ class MeasureHdController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MeasureHd $measureHd)
+    public function show(MeasureHd $measureHd, Request $request)
 
     {
+        // dump($measureHd);
+        dump($request->route('id'));
         return Inertia::render('MeasureHd/Show', ['measureHd' => $measureHd]);
+
     }
 
     /**

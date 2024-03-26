@@ -46,8 +46,9 @@ class NutriController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Nutri $nutri)
+    public function show(Nutri $nutri, Request $request)
     {
+        dump($request->route('id'));
         return Inertia::render('Nutri/Show', ['nutri' => $nutri]);
     }
 
@@ -56,6 +57,7 @@ class NutriController extends Controller
      */
     public function edit(Nutri $nutri)
     {
+        
         return Inertia::render('Nutri/Edit', ['nutri' => $nutri]);
     }
 
