@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AromaController;
+use App\Http\Controllers\MeasureController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Aroma;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -40,3 +40,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('aromas', AromaController::class);
+
+Route::resource('measures', MeasureController::class);
