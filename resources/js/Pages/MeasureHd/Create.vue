@@ -1,11 +1,19 @@
 <template>
-    <form @submit.prevent="form.put(route('nutris.update', form.id))">
+
+    <Head title="Create MeasureHd" />
+    <h1>Ajouter un MeasureHd : </h1>
+    <br>
+    <form @submit.prevent="form.post(route('measuresHd.store'))">
       <InputLabel for="name" value="Nom"/>
       <TextInput  id="number" type="string" v-model="form.name" required/>
       <br>
       <br>
+      <InputLabel for="description" value="Desc"/>
+      <TextInput  id="number" type="string" v-model="form.description" required/>
+      <br>
+      <br>
       <PrimaryButton type="submit" :disabled="form.processing">
-        Modifier
+        Ajouter
       </PrimaryButton>
     </form>
   </template>
@@ -14,20 +22,14 @@
   import InputLabel from '@/Components/InputLabel.vue'
   import TextInput from '@/Components/TextInput.vue'
   import PrimaryButton from '@/Components/PrimaryButton.vue'
-  import { useForm } from '@inertiajs/vue3'
-  import type { Nutri } from '@Models/nutris.ts'
-  
-  const props = defineProps<{
-    nutri: Nutri
-  }>();
+  import { Head, useForm } from '@inertiajs/vue3'
+  import type { MeasureHd } from '@/Models/measuresHd';
   
   const form = useForm({
-    id: props.nutri.id,
-    name: props.nutri.name,
+    name: '',
+    description: '',
   })
   
   </script>
   
-  <style scoped>
-  
-  </style>
+  <style scoped></style>

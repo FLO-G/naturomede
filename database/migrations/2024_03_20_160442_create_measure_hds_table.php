@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('measure_hds', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('latin_name');
-            $table->string('propertys');
+            $table->string('description');
         });
     }
 

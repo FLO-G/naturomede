@@ -14,8 +14,8 @@
 import InputLabel from '@/Components/InputLabel.vue'
 import TextInput from '@/Components/TextInput.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
-import { Head, useForm } from '@inertiajs/vue3'
-import { Aroma } from '@Models/aromas.ts'
+import { useForm } from '@inertiajs/vue3'
+import type { Aroma } from '@Models/aromas'
 
 const props = defineProps<{
   aroma: Aroma

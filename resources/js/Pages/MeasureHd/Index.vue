@@ -1,12 +1,12 @@
 <template>
     <main>
   
-      <Head title="Nutris" />
-      <h1>Je suis la page Nutri</h1>
+      <Head title="Measures" />
+      <h1>Je suis la page Measure</h1>
       <br>
       <CardLayout>
   
-        <Button btn="add" @click="router.visit(route('nutris.create'))">
+        <Button btn="add" @click="router.visit(route('measuresHd.create'))">
           Ajouter
         </Button>
         <br>
@@ -20,17 +20,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="nutri in nutris" :key="nutri.id">
-              <td class="row" @click="router.visit(route('nutris.show', nutri.id))">
-                {{ nutri.name }}
+            <tr v-for="measureHd in measuresHd" :key="measureHd.id">
+              <td class="row" @click="router.visit(route('measuresHd.show', measureHd.id))">
+                {{ measureHd.name }}
               </td>
               <td>
-                <Button btn="edit" @click="router.visit(route('nutris.edit', nutri.id))">
+                <Button btn="edit" @click="router.visit(route('measuresHd.edit', measureHd.id))">
                   Modifier
                 </Button>
               </td>
               <td class="danger">
-                <Button btn="danger" @click="router.delete(route('nutris.destroy', nutri.id))">
+                <Button btn="danger" @click="router.delete(route('measuresHd.destroy', measureHd.id))">
                   Supprimer
                 </Button>
               </td>
@@ -61,18 +61,19 @@
   <script lang="ts" setup>
   import CardLayout from '@/Layouts/CardLayout.vue';
   import Button from '@/Components/Button.vue';
-  import type { Nutri } from '@/Models/nutris';
+  import type { MeasureHd } from '@/Models/measuresHd';
   import { Head, router } from '@inertiajs/vue3';
   
-  const navigate = (nutri: any) => {
-    router.visit(route('nutris.show', nutri.id))
-  }
+  // const navigate = (measureHd: any) => {
+  //   router.visit(route('measuresHd.show', measureHd.id))
+  // }
   
-  const props = defineProps<{ nutris: Array<Nutri> }>();
+  const props = defineProps<{ measuresHd: Array<MeasureHd> }>();
   
   
   const head = {
     name: 'Nom',
+    
   }
   
   </script>
