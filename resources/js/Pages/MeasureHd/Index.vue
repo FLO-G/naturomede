@@ -24,16 +24,17 @@
               <td class="row" @click="router.visit(route('measuresHd.show', {measuresHd:measureHd.id}))">
                 {{ measureHd.id }}
                 {{ measureHd.name }}
-                {{ console.log(route('measuresHd.show', measureHd.id)) }}
+                {{ measureHd.description }}
+               
                  
               </td>
               <td>
-                <Button btn="edit" @click="router.visit(route('measuresHd.edit', measureHd.id))">
+                <Button btn="edit" @click="router.visit(route('measuresHd.edit', {measuresHd: measureHd.id}))">
                   Modifier
                 </Button>
               </td>
               <td class="danger">
-                <Button btn="danger" @click="router.delete(route('measuresHd.destroy', measureHd.id))">
+                <Button btn="danger" @click="router.delete(route('measuresHd.destroy', {measuresHd: measureHd.id}))">
                   Supprimer
                 </Button>
               </td>

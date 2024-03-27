@@ -1,6 +1,7 @@
 <template>
   <h1> Je suis la page MeasureHd </h1>
-  <p> {{ measureHd }}</p>
+  <p> {{ measureHd.name }}</p>
+  <p> {{ measureHd.description }}</p>
      
   <PrimaryButton @click="router.visit(route('measuresHd.edit', measureHd.id))">
   Modifier

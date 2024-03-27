@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="form.put(route('measuresHd.update', {measuresHd: form.id}))">
+    <form @submit.prevent="form.put(route('measuresHd.update', form.id))">
       <InputLabel for="name" value="Nom"/>
       <TextInput  id="number" type="string" v-model="form.name" required/>
       <br>
