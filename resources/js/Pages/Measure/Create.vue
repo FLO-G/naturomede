@@ -1,9 +1,9 @@
 <template>
 
-    <Head title="Create MeasureHd" />
+    <Head title="Create Measure" />
     <h1>Ajouter un MeasureHd : </h1>
     <br>
-    <form @submit.prevent="form.post(route('measuresHd.store'))">
+    <form @submit.prevent="form.post(route('measures.store'))">
       <InputLabel for="name" value="Nom"/>
       <TextInput  id="number" type="string" v-model="form.name" required/>
       <br>
@@ -22,7 +22,7 @@
   import InputLabel from '@/Components/InputLabel.vue'
   import TextInput from '@/Components/TextInput.vue'
   import PrimaryButton from '@/Components/PrimaryButton.vue'
-  import { Head, useForm } from '@inertiajs/vue3'
+  import { Head, useForm, router } from '@inertiajs/vue3'
   
   const form = useForm({
     name: '',

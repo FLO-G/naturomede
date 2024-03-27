@@ -6,7 +6,7 @@
       <br>
       <CardLayout>
   
-        <Button btn="add" @click="router.visit(route('measuresHd.create'))">
+        <Button btn="add" @click="router.visit(route('measures.create'))">
           Ajouter
         </Button>
         <br>
@@ -20,21 +20,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="measureHd in measuresHd" :key="measureHd.id">
-              <td class="row" @click="router.visit(route('measuresHd.show', {measuresHd:measureHd.id}))">
-                {{ measureHd.id }}
-                {{ measureHd.name }}
-                {{ measureHd.description }}
+            <tr v-for="measure in measures" :key="measure.id">
+              <td class="row" @click="router.visit(route('measures.show', {measure:measure.id}))">
+                {{ measure.id }}
+                {{ measure.name }}
+                {{ measure.description }}
                
                  
               </td>
               <td>
-                <Button btn="edit" @click="router.visit(route('measuresHd.edit', {measuresHd: measureHd.id}))">
+                <Button btn="edit" @click="router.visit(route('measures.edit', {measure: measure.id}))">
                   Modifier
                 </Button>
               </td>
               <td class="danger">
-                <Button btn="danger" @click="router.delete(route('measuresHd.destroy', {measuresHd: measureHd.id}))">
+                <Button btn="danger" @click="router.delete(route('measures.destroy', {measure: measure.id}))">
                   Supprimer
                 </Button>
               </td>
@@ -65,14 +65,14 @@
   <script lang="ts" setup>
   import CardLayout from '@/Layouts/CardLayout.vue';
   import Button from '@/Components/Button.vue';
-  import type { MeasureHd } from '@/Models/measuresHd';
+  import type { Measure } from '@/Models/measures';
   import { Head, router } from '@inertiajs/vue3';
   
   // const navigate = (measureHd: any) => {
   //   router.visit(route('measuresHd.show', measureHd.id))
   // }
   
-  const props = defineProps<{ measuresHd: Array<MeasureHd> }>();
+  const props = defineProps<{ measures: Array<Measure> }>();
   
   
   const head = {

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('measure_hds', function (Blueprint $table) {
+        Schema::create('measures', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('description');
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('measure_hds');
+        Schema::dropIfExists('measures');
     }
 };

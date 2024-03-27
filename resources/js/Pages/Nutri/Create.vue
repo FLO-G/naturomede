@@ -19,7 +19,7 @@
   import TextInput from '@/Components/TextInput.vue'
   import PrimaryButton from '@/Components/PrimaryButton.vue'
   import { Head, useForm } from '@inertiajs/vue3'
-  import { Nutris } from '@Models/nutris.ts'
+ 
   
   const form = useForm({
     name: '',
