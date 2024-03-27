@@ -12,7 +12,7 @@ class Herbal extends Model
 
     public $timestamps = false;
 
-    public function tretables(): MorphToMany
+    public function treatables(): MorphToMany
     {
         return $this->morphToMany(Patho::class, 'treatables');
     }
@@ -21,4 +21,6 @@ class Herbal extends Model
     {
         return $this->morphToMany(Symptom::class, 'curables');
     }
+
+    
 }

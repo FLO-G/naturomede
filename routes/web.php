@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AromaController;
+use App\Http\Controllers\MeasureHdController;
+use App\Http\Controllers\NutriController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Aroma;
 use Illuminate\Foundation\Application;
@@ -40,3 +42,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('aromas', AromaController::class);
+Route::resource('nutris', NutriController::class);
+Route::resource('measuresHd', MeasureHdController::class);

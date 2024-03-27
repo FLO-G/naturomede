@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\MeasureHd;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class MeasureHdController extends Controller
      */
     public function index()
     {
-        //
+        
+        $measuresHd = MeasureHd::all();
+        return Inertia::render('MeasureHd/Index', ['measuresHd' => $measuresHd]);
     }
 
     /**
@@ -20,7 +23,7 @@ class MeasureHdController extends Controller
      */
     public function create()
     {
-        //
+       return Inertia::render('MeasureHd/Create');
     }
 
     /**
@@ -28,15 +31,31 @@ class MeasureHdController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $measureHd = new MeasureHd();
+
+        $measureHd->name = $validated['name'];
+        $measureHd->description = $validated['description'];
+
+        $measureHd->save();
+
+        return $this->index();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(MeasureHd $measureHd)
+    public function show(MeasureHd $measuresHd, Request $request)
+
     {
-        //
+        // dump($measureHd);
+        // dump($request->route('id'));
+        return Inertia::render('MeasureHd/Show', ['measureHd' => $measuresHd]);
+
     }
 
     /**
@@ -44,7 +63,7 @@ class MeasureHdController extends Controller
      */
     public function edit(MeasureHd $measureHd)
     {
-        //
+        return Inertia::render('MeasureHd/Edit', ['measureHd' => $measureHd]);
     }
 
     /**
@@ -52,7 +71,17 @@ class MeasureHdController extends Controller
      */
     public function update(Request $request, MeasureHd $measureHd)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $measureHd->name = $request->name;
+        $measureHd->description = $request->description;
+
+        $measureHd->update();
+
+        return $this->index();
     }
 
     /**
@@ -60,6 +89,8 @@ class MeasureHdController extends Controller
      */
     public function destroy(MeasureHd $measureHd)
     {
-        //
+        $measureHd->delete();
+
+        return $this->index()->with('message', 'Measure deleted successfully');
     }
 }
