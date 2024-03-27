@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-class MeasureHd extends Model
+class Measure extends Model
 {
     use HasFactory;
 
@@ -22,3 +22,4 @@ class MeasureHd extends Model
         return $this->morphToMany(Symptom::class, 'curable');
     }
 }
+

@@ -1,4 +1,4 @@
-export type MeasureHd = {
+export type Measure = {
     id: number,
     name: string,
     description: string,

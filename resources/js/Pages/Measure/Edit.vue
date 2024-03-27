@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="form.put(route('measuresHd.update', form.id))">
+    <form @submit.prevent="form.put(route('measures.update', form.id))">
       <InputLabel for="name" value="Nom"/>
       <TextInput  id="number" type="string" v-model="form.name" required/>
       <br>
@@ -17,16 +17,16 @@
   import TextInput from '@/Components/TextInput.vue'
   import PrimaryButton from '@/Components/PrimaryButton.vue'
   import { useForm } from '@inertiajs/vue3'
-  import type { MeasureHd } from '@/Models/measuresHd';
+  import type { Measure } from '@/Models/measures';
   
   const props = defineProps<{
-    measureHd: MeasureHd
+    measure: Measure
   }>();
   
   const form = useForm({
-    id: props.measureHd.id,
-    name: props.measureHd.name,
-    description: props.measureHd.description,
+    id: props.measure.id,
+    name: props.measure.name,
+    description: props.measure.description,
   })
   
   </script>
