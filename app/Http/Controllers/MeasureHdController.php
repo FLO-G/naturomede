@@ -49,12 +49,12 @@ class MeasureHdController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MeasureHd $measureHd, Request $request)
+    public function show(MeasureHd $measuresHd, Request $request)
 
     {
         // dump($measureHd);
-        dump($request->route('id'));
-        return Inertia::render('MeasureHd/Show', ['measureHd' => $measureHd]);
+        // dump($request->route('id'));
+        return Inertia::render('MeasureHd/Show', ['measureHd' => $measuresHd]);
 
     }
 

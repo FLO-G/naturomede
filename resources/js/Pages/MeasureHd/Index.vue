@@ -21,7 +21,7 @@
           </thead>
           <tbody>
             <tr v-for="measureHd in measuresHd" :key="measureHd.id">
-              <td class="row" @click="router.visit(route('measuresHd.show', measureHd.id))">
+              <td class="row" @click="router.visit(route('measuresHd.show', {measuresHd:measureHd.id}))">
                 {{ measureHd.id }}
                 {{ measureHd.name }}
                 {{ console.log(route('measuresHd.show', measureHd.id)) }}
