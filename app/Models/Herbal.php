@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Herbal extends Model
@@ -22,5 +23,9 @@ class Herbal extends Model
         return $this->morphToMany(Symptom::class, 'curable');
     }
 
+    public function hrb_properties(): BelongsToMany
+    {
+        return $this->belongsToMany(HrbProperty::class, 'herbal_properties');
+    }
     
 }

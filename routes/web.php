@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\AromaController;
-use App\Http\Controllers\MeasureController;
-use App\Http\Controllers\NutriController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Symptom;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\AromaController;
+use App\Http\Controllers\NutriController;
+use App\Http\Controllers\HerbalController;
+use App\Http\Controllers\MeasureController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SymptomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +46,5 @@ require __DIR__.'/auth.php';
 Route::resource('aromas', AromaController::class);
 Route::resource('nutris', NutriController::class);
 Route::resource('measures', MeasureController::class);
+Route::resource('herbals', HerbalController::class);
+Route::resource('symptoms', SymptomController::class);
