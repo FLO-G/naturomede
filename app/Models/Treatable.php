@@ -14,14 +14,20 @@ class Treatable extends Model
 
     public $timestamps = false;
 
-    
-   public function treatables(): MorphTo
-   {
-       return $this->morphTo();
-   }
 
-   public function therapys(): MorphToMany
-   {
-       return $this->morphToMany(Client::class, 'therapys');
-   }
+    public function treatables(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function therapies(): MorphToMany
+    {
+        return $this->morphToMany(Client::class, 'therapies');
+    }
+
+    // Récupérer foreign id PATHO
+    public function patho(): BelongsTo
+    {
+        return $this->belongsTo(Patho::class);
+    }
 }

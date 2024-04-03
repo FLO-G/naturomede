@@ -2,6 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\Aroma;
+use App\Models\Curable;
+use App\Models\Herbal;
+use App\Models\MeasureHd;
+use App\Models\Nutri;
+use App\Models\Patho;
+use App\Models\Symptom;
+use App\Models\Treatable;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -24,8 +32,14 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Relation::enforceMorphMap([
-            'Patho' => 'App\Models\Patho',
-            'Symptom' => 'App\Models\Symptom',
+            'Patho' => Patho::class,
+            'Symptom' => Symptom::class,
+            'Herbal' => Herbal::class,
+            'Nutri' => Nutri::class,
+            'Measure' => MeasureHd::class,
+            'Aroma' => Aroma::class,
+            'Treatable' => Treatable::class,
+            'Curable' => Curable::class,
         ]);
     }
 }

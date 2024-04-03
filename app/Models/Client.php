@@ -12,7 +12,7 @@ class Client extends Model
 
     public $timestamps = false;
 
-    public function treatables()
+    public function therapies()
     {
         return $this->morphedByMany(Treatable::class, 'therapy', 'therapys');
     }
@@ -22,7 +22,7 @@ class Client extends Model
     {
         return $this->morphedByMany(Treatable::class, 'therapy', 'therapys');
     }
-  
+
 
     public function pathos()
     {
@@ -35,7 +35,7 @@ class Client extends Model
         return $this->morphedByMany(Symptom::class, 'problem', 'problems');
     }
 
-    
+
     public function gender(): BelongsTo
     {
         return $this->belongsTo(Gender::class);

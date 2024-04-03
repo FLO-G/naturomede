@@ -10,14 +10,10 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-    Schema::create('clients', function (Blueprint $table) {
-        $table->id();
-        $table->string('firstname');
-        $table->string('lastname');
-        $table->string('email');
-        // $table->foreignId('gender_id');
-        $table->foreignId('gender_id')->default(0);
+    {
+        Schema::create('property_hbs', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('property_hbs');
     }
 };

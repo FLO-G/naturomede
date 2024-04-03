@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->morphs('treatable');
             $table->foreignId('patho_id');
-           
         });
     }
 

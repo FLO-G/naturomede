@@ -9,9 +9,16 @@ use App\Models\Family;
 use App\Models\FamilyProperty;
 use App\Models\Gender;
 use App\Models\Group;
+use App\Models\Herbal;
+use App\Models\HerbalProperty;
+use App\Models\MeasureHd;
+use App\Models\Nutri;
 use App\Models\Patho;
 use App\Models\Property;
+use App\Models\PropertyHb;
 use App\Models\Symptom;
+use App\Models\System;
+use App\Models\Treatable;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -158,6 +165,101 @@ class DatabaseRealSeeder extends Seeder
         //     $sys = new System($system);
         //     $sys->save();
         // }
+        $herbals = [
+            ['name' => 'Ashwagandha'],
+            ['name' => 'Aubépine'],
+            ['name' => 'Bouillon blanc'],
+            ['name' => 'Cassis MG'],
+            ['name' => 'Curcuma'],
+            ['name' => 'Eschscholtzia'],
+            ['name' => 'Fumeterre'],
+            ['name' => 'Harpagophytum'],
+            ['name' => 'Mauve'],
+            ['name' => 'Mélisse'],
+            ['name' => 'Ortie feuille'],
+            ['name' => 'Passiflore'],
+            ['name' => 'Pin des montagnes'],
+            ['name' => 'Plantain'],
+            ['name' => 'Prêle'],
+            ['name' => 'Reine des près'],
+            ['name' => 'Rodiole'],
+            ['name' => 'Tilleul MG'],
+            ['name' => 'Valériane'],
+        ];
+
+        foreach ($herbals as $herbal)
+        {
+            $phyto = new Herbal($herbal);
+            $phyto->save();
+        }
+
+        $propertieshb = [
+            ['name' => 'Prop 1'],
+            ['name' => 'Prop 2'],
+            ['name' => 'Prop 3'],
+            ['name' => 'Prop 4'],
+            ['name' => 'Prop 5'],
+        ];
+
+        foreach($propertieshb as $propertyhb)
+        {
+            PropertyHb::create($propertyhb);
+        }
+
+        $herbalproperties = [
+            [
+                'herbal_id' => 1,
+                'property_hb_id' => 5
+            ],
+            [
+                'herbal_id' => 1,
+                'property_hb_id' => 4
+            ],
+            [
+                'herbal_id' => 2,
+                'property_hb_id' => 3
+            ],
+            [
+                'herbal_id' => 3,
+                'property_hb_id' => 5
+            ],
+            [
+                'herbal_id' => 3,
+                'property_hb_id' => 2
+            ],
+        ];
+
+        foreach ($herbalproperties as $herbalproperty) {
+            HerbalProperty::create($herbalproperty);
+        }
+
+        $measures = [
+            ['name' => 'measure 1'],
+            ['name' => 'measure 2'],
+            ['name' => 'measure 3'],
+            ['name' => 'measure 4'],
+            ['name' => 'measure 5'],
+        ];
+
+        foreach ($measures as $measure)
+        {
+            $msr = new MeasureHd($measure);
+            $msr->save();
+        }
+
+        $nutris = [
+            ['name' => 'nutri 1'],
+            ['name' => 'nutri 2'],
+            ['name' => 'nutri 3'],
+            ['name' => 'nutri 4'],
+            ['name' => 'nutri 5'],
+        ];
+
+        foreach ($nutris as $nutri)
+        {
+            $msr = new Nutri($nutri);
+            $msr->save();
+        }
 
         $symptoms = [
             ['name' => 'Crampes'],
@@ -213,10 +315,21 @@ class DatabaseRealSeeder extends Seeder
         //     $client->symptoms()->attach(array_slice($ids, 0, rand(1, 4)));
             
         // });
+        
+        $ids = range(1, 10);
+        
+        Patho::each(function ($patho) use($ids){
+            shuffle($ids);
+            $patho->herbals()->attach(array_slice($ids, 0, rand(1, 4)));
+            shuffle($ids);
+            $patho->nutris()->attach(array_slice($ids, 0, rand(1, 4)));
+            shuffle($ids);
+            $patho->measures()->attach(array_slice($ids, 0, rand(1, 4)));
+            shuffle($ids);
+            $patho->aromas()->attach(array_slice($ids, 0, rand(1, 4)));
+        });
 
         $genders = Gender::pluck('id'); // Récupère les IDs de tous les genres disponibles dans la base de données
-
-        $ids = range(1, 10);
 
         Client::factory()->count(10)->create()->each(function ($client) use ($genders, $ids) {
             $client->gender_id = $genders->random(); // Attribue un genre aléatoire à chaque client
@@ -228,57 +341,9 @@ class DatabaseRealSeeder extends Seeder
         });
         
 
-        // $herbals = [
-        //     ['name' => 'Ashwagandha', 'property' => 'Adaptogène stress'],
-        //     ['name' => 'Aubépine', 'property' => 'Somatisation cardiaque ou spasmophilie'],
-        //     ['name' => 'Bouillon blanc', 'property' => 'Emolliente, mucolytique'],
-        //     ['name' => 'Cassis MG', 'property' => 'Anti-inflammatoire, adaptogène'],
-        //     ['name' => 'Curcuma', 'property' => 'Anti-inflammatoire'],
-        //     ['name' => 'Eschscholtzia', 'property' => 'Trouble du sommeil'],
-        //     ['name' => 'Fumeterre', 'property' => 'Soutien du foie'],
-        //     ['name' => 'Harpagophytum', 'property' => 'Anti-inflammatoire'],
-        //     ['name' => 'Mauve', 'property' => 'Emolliente, mucolytique, béchique'],
-        //     ['name' => 'Mélisse', 'property' => 'Gaba érgique, anti spasmodique digestive'],
-        //     ['name' => 'Ortie feuille', 'property' => 'Réduit la destruction du cartilage'],
-        //     ['name' => 'Passiflore', 'property' => 'Gaba érgique'],
-        //     ['name' => 'Pin des montagnes', 'property' => 'Stimule les chondrocytes'],
-        //     ['name' => 'Plantain', 'property' => 'Astringent, antitussif, anti-histaminique'],
-        //     ['name' => 'Prêle', 'property' => 'Reminéralisante'],
-        //     ['name' => 'Reine des près', 'property' => 'Anti-inflammatoire'],
-        //     ['name' => 'Rodiole', 'property' => 'Personne trop stressée'],
-        //     ['name' => 'Tilleul MG', 'property' => 'Pour les enfants ou les femmes enceinte'],
-        //     ['name' => 'Valériane', 'property' => 'Gaba érgique, miorelaxante, aide à l\'endormissement'],
-        // ];
+        
 
-        // foreach ($herbals as $herbal)
-        // {
-        //     $phyto = new Herbal($herbal);
-        //     $phyto->save();
-        // }
 
-        // $nutris = [
-        //     ['name' => 'Calcium'],
-        //     ['name' => 'Chondroïtine sulfate'],
-        //     ['name' => 'Glucosamine sulfate'],
-        //     ['name' => 'Glutamine'],
-        //     ['name' => 'Magnésium'],
-        //     ['name' => 'Mélatonine'],
-        //     ['name' => 'Oméga 3'],
-        //     ['name' => 'Oméga 6'],
-        //     ['name' => 'Oméga 9'],
-        //     ['name' => 'Protéines'],
-        //     ['name' => 'Taurine'],
-        //     ['name' => 'Tryptophane'],
-        //     ['name' => 'Vitamines groupe B'],
-        //     ['name' => 'Vitamine D3'],
-        //     ['name' => 'Zinc'],
-        // ];
-
-        // foreach ($nutris as $nutri)
-        // {
-        //     $nut = new Nutri($nutri);
-        //     $nut->save();
-        // }
 
         // $p = Patho::where('name', 'Dystonie Neuro-Végétative')->first();
         // $p->systems()->attach(System::whereIn('name', ['Nerveux'])->pluck('id'));

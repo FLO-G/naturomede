@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('herbals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('latin_name')->nullable();
         });
     }
 

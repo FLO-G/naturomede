@@ -30,22 +30,24 @@ class Patho extends Model
 
     public function herbals()
     {
-        return $this->morphedByMany(Herbal::class, 'treatable', 'tretables');
+        return $this->morphedByMany(Herbal::class, 'treatable', 'treatables');
     }
 
     public function nutris()
     {
-        return $this->morphedByMany(Nutri::class, 'treatable', 'tretables');
+        return $this->morphedByMany(Nutri::class, 'treatable', 'treatables');
     }
 
     public function measures()
+    public function measures()
     {
+        return $this->morphedByMany(MeasureHd::class, 'treatable', 'treatables');
         return $this->morphedByMany(Measure::class, 'treatable', 'tretables');
     }
 
     public function aromas()
     {
-        return $this->morphedByMany(Aroma::class, 'treatable', 'tretables');
+        return $this->morphedByMany(Aroma::class, 'treatable', 'treatables');
     }
 }
 
