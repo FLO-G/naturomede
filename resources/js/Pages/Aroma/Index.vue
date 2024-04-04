@@ -1,10 +1,19 @@
 <template>
+
+<Sidebar></Sidebar>
+
+
+
   <main>
+
+   
 
     <Head title="Aromas" />
     <h1>Je suis la page Aroma</h1>
     <br>
     <CardLayout>
+
+      
 
       <Button btn="add" @click="router.visit(route('aromas.create'))">
         Ajouter
@@ -65,6 +74,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import Button from '@/Components/Button.vue';
 import type { Aroma, Family } from '@/Models/aromas';
 import { Head, router } from '@inertiajs/vue3';
+import Navbar from '@/Components/Navbar.vue';
+import Sidebar from '@/Components/Sidebar.vue';
 
 const navigate = (aroma: any) => {
   router.visit(route('aromas.show', aroma.id))
@@ -121,6 +132,10 @@ tbody tr:hover {
   background-color: var(--main-primary);
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+}
 .edit {
   color: white;
   background-color: blue;

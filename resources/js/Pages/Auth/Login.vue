@@ -7,6 +7,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
+
 defineProps({
     canResetPassword: {
         type: Boolean,
@@ -36,6 +37,9 @@ const submit = () => {
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
+
+       
+        
 
         <form @submit.prevent="submit">
             <div>
@@ -69,7 +73,7 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="flex block mt-4 space-between gap-28">
+            <div class="flex mt-4 space-between gap-28">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
                     <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Se souvenir de moi</span>
