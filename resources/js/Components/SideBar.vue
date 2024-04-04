@@ -1,6 +1,6 @@
 <template>
     <div class="relative flex min-h-screen">
-        <div class="bg-cyan-600 text-cyan-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 md:relative md:-translate-x-0 transform -translate-x-full transition duration-200 ease-in-out" :class="{ 'relative -translate-x-0': showSidebar }">
+        <div v-show="showSidebar" class="bg-cyan-600 text-cyan-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 md:relative md:-translate-x-0 transform transition duration-200 ease-in-out">
             <div class="flex items-center space-x-2 px-4">
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +131,7 @@
         </div>
         <div class="flex-1">
             <div class="bg-white shadow px-2 py-4">
-                <button @click="showSidebar = !showSidebar" class="text-cyan-600">
+                <button @click="showSidebar = !showSidebar" class="text-cyan-600 ">
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -145,7 +145,7 @@
   d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 </svg>
 </button></div>
-            <div class="p-8 text-cyan-700 font-extrabold">Content</div>
+            
         </div>
     </div>
 
@@ -156,6 +156,7 @@
 import { ref } from 'vue';
 
 const showSidebar = ref(false);
+
 </script>
 
 <style scoped>
