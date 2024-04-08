@@ -1,12 +1,19 @@
 <template>
 
-<Sidebar></Sidebar>
+
+<div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-3 p-4">
+  <div @click="showSidebar = !showSidebar" v-if="!showSidebar">Show Sidebar</div>
+  <div v-if="showSidebar" class="lg:grid-cols-12 md:grid-cols-3 sm:grid-cols-1"><Sidebar></Sidebar></div>
+  
+ 
+
+
 
 
 
   <main>
 
-   
+    
 
     <Head title="Aromas" />
     <h1>Je suis la page Aroma</h1>
@@ -46,7 +53,9 @@
           </tr>
         </tbody>
       </table>
+      
     </CardLayout>
+    
     <!-- <p v-for="aroma in aromas" :key="aroma">
       {{ aroma.name }}
       <p v-for="family in aroma.families" :key="family">
@@ -65,6 +74,7 @@
     <br>
     <!-- <DynamicTable :headers="head" :data="props.aromas" @select="navigate($event)"/> -->
   </main>
+</div>
 </template>
 
 <script lang="ts" setup>
@@ -74,8 +84,10 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import Button from '@/Components/Button.vue';
 import type { Aroma, Family } from '@/Models/aromas';
 import { Head, router } from '@inertiajs/vue3';
-import Navbar from '@/Components/Navbar.vue';
 import Sidebar from '@/Components/Sidebar.vue';
+import { ref } from 'vue';
+
+const showSidebar = ref(false);
 
 const navigate = (aroma: any) => {
   router.visit(route('aromas.show', aroma.id))
