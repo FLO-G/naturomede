@@ -1,7 +1,7 @@
 <template>
 
 
-  <div class="flex">
+ 
     
   <div class=""><Sidebar></Sidebar></div>
   
@@ -71,7 +71,7 @@
       <!-- <DynamicTable :headers="head" :data="props.aromas" @select="navigate($event)"/> -->
     </div>
     </main>
-  </div>
+
   
   </template>
   
