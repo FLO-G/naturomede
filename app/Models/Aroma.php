@@ -16,7 +16,7 @@ class Aroma extends Model
 
     protected $fillable = ['name'];
 
-    public function tretables(): MorphToMany
+    public function treatables(): MorphToMany
     {
         return $this->morphToMany(Patho::class, 'treatable');
     }
