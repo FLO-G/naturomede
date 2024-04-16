@@ -91,12 +91,13 @@ const submit = () => {
                 </PrimaryButton>
 
                 <div class="flex gap-32 ms-2 mt-3">
-                <Link
-                    :href="route('register')"
+                <a :href="route('register')"
                     class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 me-2 "
                 >
                     Pas encore inscrit ?
-                </Link>
+                </a>
+                    
+                
                 </div>
             </div>
         </form>
