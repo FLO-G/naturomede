@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('definition')->nullable();
+<<<<<<< HEAD
             $table->string('cause');
             $table->string('complication');
+=======
+            $table->string('cause')->nullable();
+            $table->string('complication')->nullable();
+>>>>>>> yamine
 
 
 

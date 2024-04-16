@@ -1,9 +1,10 @@
 <template>
 
 
-  <div class="flex">
+ 
     
-  <div class=""><Sidebar></Sidebar></div>
+  <div class="flex">
+    <Sidebar></Sidebar>
   
     <main>
   
@@ -15,6 +16,8 @@
       
       <br>
       <CardLayout>
+  
+        
   
         <Button btn="add" @click="router.visit(route('aromas.create'))">
           Ajouter
@@ -30,7 +33,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="aroma in aromas" :key="aroma.id">
+            <tr v-for="aroma in aromas" :key="aroma">
               <td class="row" @click="router.visit(route('aromas.show', aroma.id))">
                 {{ aroma.name }}
               </td>
@@ -50,10 +53,13 @@
         
       </CardLayout>
       
+      
       <br>
+     
     </div>
-    </main>
+  </main>
   </div>
+
   
   </template>
   
@@ -65,6 +71,8 @@
   import type { Aroma, Family } from '@/Models/aromas';
   import { Head, router } from '@inertiajs/vue3';
   import Sidebar from '@/Components/Sidebar.vue';
+  import { ref } from 'vue';
+  
   
   
   
