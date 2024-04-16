@@ -16,8 +16,6 @@
       <br>
       <CardLayout>
   
-        
-  
         <Button btn="add" @click="router.visit(route('aromas.create'))">
           Ajouter
         </Button>
@@ -52,23 +50,7 @@
         
       </CardLayout>
       
-      <!-- <p v-for="aroma in aromas" :key="aroma">
-        {{ aroma.name }}
-        <p v-for="family in aroma.families" :key="family">
-          {{ family.name }} : {{ family.group.name }}
-          <p v-for="property in family.properties" :key="property" @click="router.visit(route('aromas.show', aroma.id))">
-            {{ property.name }}
-          </p>
-        </p>
-        <PrimaryButton @click="router.visit(route('aromas.edit', aroma.id))">
-            Modifier
-        </PrimaryButton>
-        <PrimaryButton @click="router.delete(route('aromas.destroy', aroma.id))">
-        Supprimer
-        </PrimaryButton>
-      </p> -->
       <br>
-      <!-- <DynamicTable :headers="head" :data="props.aromas" @select="navigate($event)"/> -->
     </div>
     </main>
   </div>
