@@ -177,14 +177,15 @@ const showSidebar = ref(false);
 
 <style scoped>
 
-    @media (min-width: 500px) and (max-width: 750px)  {
+    @media (min-width: 350px) and (max-width: 768px)  {
         #sidebar {
-      height: 100vw;
-      width: 18vw;
-      background-color: red
+          height: 100vw;
+          width: 22vw;
+          background-color: red
     }
+      
     }
-
+   
 
  
 
