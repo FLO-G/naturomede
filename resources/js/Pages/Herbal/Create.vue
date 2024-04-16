@@ -1,11 +1,17 @@
 <template>
-    <form @submit.prevent="form.put(route('nutris.update', form.id))">
+
+    <Head title="Create Herbal" />
+    <h1>Ajouter un herbal : </h1>
+    <br>
+    <form @submit.prevent="form.post(route('herbals.store'))">
       <InputLabel for="name" value="Nom"/>
       <TextInput  id="number" type="string" v-model="form.name" required/>
       <br>
+      <InputLabel for="latin_name" value="Nom_Latin"/>
+      <TextInput  id="number" type="string" v-model="form.latin_name" required/>
       <br>
       <PrimaryButton type="submit" :disabled="form.processing">
-        Modifier
+        Ajouter
       </PrimaryButton>
     </form>
   </template>
@@ -14,20 +20,13 @@
   import InputLabel from '@/Components/InputLabel.vue'
   import TextInput from '@/Components/TextInput.vue'
   import PrimaryButton from '@/Components/PrimaryButton.vue'
-  import { useForm } from '@inertiajs/vue3'
-  import type { Nutri } from '@Models/nutris'
-  
-  const props = defineProps<{
-    nutri: Nutri
-  }>();
+  import { Head, useForm } from '@inertiajs/vue3'
   
   const form = useForm({
-    id: props.nutri.id,
-    name: props.nutri.name,
+    name: '',
+    latin_name:'',
   })
   
   </script>
   
-  <style scoped>
-  
-  </style>
+  <style scoped></style>

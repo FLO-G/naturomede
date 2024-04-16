@@ -35,5 +35,9 @@ class Herbal extends Model
         return $this->morphToMany(Symptom::class, 'curables');
     }
 
+    public function hrb_properties(): BelongsToMany
+    {
+        return $this->belongsToMany(HrbProperty::class, 'herbal_properties');
+    }
     
 }

@@ -1,24 +1,12 @@
 <template>
-
-
- 
-    
-  <div class=""><Sidebar></Sidebar></div>
-  
     <main>
   
-      
-      <div class="">
-      <Head title="Aromas" />
-      
-      
-      
+      <Head title="herbals" />
+      <h1>Je suis la page herbal</h1>
       <br>
       <CardLayout>
   
-        
-  
-        <Button btn="add" @click="router.visit(route('aromas.create'))">
+        <Button btn="add" @click="router.visit(route('herbals.create'))">
           Ajouter
         </Button>
         <br>
@@ -32,26 +20,25 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="aroma in aromas" :key="aroma">
-              <td class="row" @click="router.visit(route('aromas.show', aroma.id))">
-                {{ aroma.name }}
+            <tr v-for="herbal in herbals" :key="herbal">
+              <td class="row" @click="router.visit(route('herbals.show', {herbal:herbal.id}))">
+                {{ herbal.name }}
+                {{ herbal.latin_name }}
               </td>
               <td>
-                <Button btn="edit" @click="router.visit(route('aromas.edit', aroma.id))">
+                <Button btn="edit" @click="router.visit(route('herbals.edit', {herbal:herbal.id}))">
                   Modifier
                 </Button>
               </td>
               <td class="danger">
-                <Button btn="danger" @click="router.delete(route('aromas.destroy', aroma.id))">
+                <Button btn="danger" @click="router.delete(route('herbals.destroy', {herbal:herbal.id}))">
                   Supprimer
                 </Button>
               </td>
             </tr>
           </tbody>
         </table>
-        
       </CardLayout>
-      
       <!-- <p v-for="aroma in aromas" :key="aroma">
         {{ aroma.name }}
         <p v-for="family in aroma.families" :key="family">
@@ -69,10 +56,7 @@
       </p> -->
       <br>
       <!-- <DynamicTable :headers="head" :data="props.aromas" @select="navigate($event)"/> -->
-    </div>
     </main>
-
-  
   </template>
   
   <script lang="ts" setup>
@@ -80,19 +64,14 @@
   import DynamicTable from '@/Components/DynamicTable.vue';
   import PrimaryButton from '@/Components/PrimaryButton.vue';
   import Button from '@/Components/Button.vue';
-  import type { Aroma, Family } from '@/Models/aromas';
+  import type { Herbal, HrbProperty } from '@/Models/herbals';
   import { Head, router } from '@inertiajs/vue3';
-  import Sidebar from '@/Components/Sidebar.vue';
-  import { ref } from 'vue';
   
-  
-  
-  
-  const navigate = (aroma: any) => {
-    router.visit(route('aromas.show', aroma.id))
+  const navigate = (herbal: any) => {
+    router.visit(route('herbals.show', herbal.id))
   }
   
-  const props = defineProps<{ aromas: Array<Aroma> }>();
+  const props = defineProps<{ herbals: Array<Herbal> }>();
   
   
   const head = {
@@ -143,10 +122,6 @@
     background-color: var(--main-primary);
   }
   
-  h1 {
-    display: flex;
-    justify-content: center;
-  }
   .edit {
     color: white;
     background-color: blue;

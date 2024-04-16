@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Herbal;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class HerbalController extends Controller
      */
     public function index()
     {
-        //
+        $herbals =  Herbal::with(['hrb_properties'])->get();
+        // $herbals = Herbal::all();
+        return Inertia::render('Herbal/Index', ['herbals' => $herbals]);
     }
 
     /**
@@ -20,7 +23,7 @@ class HerbalController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Herbal/Create');
     }
 
     /**
@@ -28,7 +31,21 @@ class HerbalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'latin_name' => 'required'
+        ]);
+
+        $herbal = new Herbal();
+
+        $herbal->name = $request->name;
+
+        $herbal->latin_name = $request->latin_name;
+
+        $herbal->save();
+
+        return $this->index();
+
     }
 
     /**
@@ -36,7 +53,9 @@ class HerbalController extends Controller
      */
     public function show(Herbal $herbal)
     {
-        //
+
+        $herbal->load(['hrb_properties']);
+        return Inertia::render('Herbal/Show', ['herbal' => $herbal]);
     }
 
     /**
@@ -44,7 +63,7 @@ class HerbalController extends Controller
      */
     public function edit(Herbal $herbal)
     {
-        //
+        return Inertia::render('Herbal/Edit', ['herbal' => $herbal]);
     }
 
     /**
@@ -52,7 +71,19 @@ class HerbalController extends Controller
      */
     public function update(Request $request, Herbal $herbal)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'latin_name' => 'required'
+
+        ]);
+
+        $herbal->name = $request->name;
+
+        $herbal->latin_name = $request->latin_name;
+
+        $herbal->update();
+
+        return $this->index();
     }
 
     /**
@@ -60,6 +91,7 @@ class HerbalController extends Controller
      */
     public function destroy(Herbal $herbal)
     {
-        //
+        $herbal->delete();
+        return $this->index()->with('message', 'Herbal deleted successfully');
     }
 }

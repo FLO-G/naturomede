@@ -1,8 +1,10 @@
 <template>
-    <form @submit.prevent="form.put(route('nutris.update', form.id))">
+    <form @submit.prevent="form.put(route('herbals.update', form.id))">
       <InputLabel for="name" value="Nom"/>
       <TextInput  id="number" type="string" v-model="form.name" required/>
       <br>
+      <InputLabel for="latin_name" value="Nom_Latin"/>
+      <TextInput  id="number" type="string" v-model="form.latin_name" required/>
       <br>
       <PrimaryButton type="submit" :disabled="form.processing">
         Modifier
@@ -15,15 +17,16 @@
   import TextInput from '@/Components/TextInput.vue'
   import PrimaryButton from '@/Components/PrimaryButton.vue'
   import { useForm } from '@inertiajs/vue3'
-  import type { Nutri } from '@Models/nutris'
+  import type { Herbal } from '@Models/herbals'
   
   const props = defineProps<{
-    nutri: Nutri
+    herbal: Herbal
   }>();
   
   const form = useForm({
-    id: props.nutri.id,
-    name: props.nutri.name,
+    id: props.herbal.id,
+    name: props.herbal.name,
+    latin_name: props.herbal.latin_name,
   })
   
   </script>

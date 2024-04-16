@@ -10,12 +10,11 @@
 
 <style scoped>
 div {
-  width: 80vw;
-  padding: 50px;
+  width: 20vw;
+  padding: 20px;
   margin: 0 auto;
-  border-radius: 50px;
+  border-radius: 5px;
   background: #fafafa;
-  box-shadow: 20px 20px 42px #bebebe,
-              -20px -20px 42px #ffffff;
+  box-shadow: 2 #ffffff;
 }
 </style>

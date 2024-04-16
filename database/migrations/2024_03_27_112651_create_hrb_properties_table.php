@@ -11,16 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('symptoms', function (Blueprint $table) {
+        Schema::create('hrb_properties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('definition')->nullable();
-            $table->string('cause')->nullable();
-            $table->string('complication')->nullable();
-
-
-
-            
         });
     }
 
@@ -29,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('symptoms');
+        Schema::dropIfExists('hrb_properties');
     }
 };
