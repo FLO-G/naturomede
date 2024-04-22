@@ -15,11 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('definition')->nullable();
-            $table->string('cause');
-            $table->string('complication');
-
-
-
+            $table->string('cause')->nullable();
+            $table->string('complication')->nullable();
             
         });
     }

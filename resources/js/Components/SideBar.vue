@@ -6,7 +6,7 @@
     
       
       <!--Logo Section of the sidebar-->
-      <div v-show="showSidebar" class="bg-cyan-600 text-cyan-100 w-full space-y-6 px-2 absolute inset-y-0 left-0 md:relative md:-translate-x-0 transform transition duration-1000 ease-in-out" id="sidebar">
+      <div v-show="showSidebar" class="bg-cyan-600 text-cyan-100 relative" id="sidebar">
           
        
         <div class="flex items-center space-x-2 px-4">
@@ -177,13 +177,7 @@ const showSidebar = ref(false);
 
 <style scoped>
 
-  @media (min-width: 500px) and (max-width: 750px)  {
-      #sidebar {
-    height: 100vw;
-    width: 18vw;
-    background-color: red
-  }
-  }
+  
 
 
 
