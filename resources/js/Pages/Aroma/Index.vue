@@ -3,7 +3,7 @@
 
   <div class="flex">
     
-  <div class=""><Sidebar></Sidebar></div>
+  <Sidebar></Sidebar>
   
     <main>
   
@@ -11,9 +11,13 @@
       <div class="">
       <Head title="Aromas" />
       
-      
-      
+      <!--Reactive Searchinput-->
+      <div><label for="searchfield">search</label>
+      <input v-model="search" type="text" id="searchfield" class="block rounded-lg border-2 py-2 pl-10">
+      </div>
       <br>
+
+
       <CardLayout>
   
         <Button btn="add" @click="router.visit(route('aromas.create'))">
@@ -64,7 +68,8 @@
   import Button from '@/Components/Button.vue';
   import type { Aroma, Family } from '@/Models/aromas';
   import { Head, router } from '@inertiajs/vue3';
-  import Sidebar from '@/Components/Sidebar.vue';
+  import Sidebar from '@/Components/SideBar.vue';
+  import { ref, computed, watch } from 'vue';
   
   
   
@@ -74,6 +79,25 @@
   
   const props = defineProps<{ aromas: Array<Aroma> }>();
   
+  const search = ref("");
+
+
+  // let searchValue = computed(() => {
+  //   let url = new URL(route("aromas.index"));
+  //   // url.searchParams.append("page", pageNumber.value);
+  //   // url.searchParams.append("search", search.value);
+  //   // return url.toString();
+
+  //   if(search.value) {
+  //     url.searchParams.append("search", search.value);
+
+  //   }
+
+  //   return url;
+
+  // });
+
+
   
   const head = {
     name: 'Nom',

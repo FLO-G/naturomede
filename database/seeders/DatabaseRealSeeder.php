@@ -9,6 +9,7 @@ use App\Models\Family;
 use App\Models\FamilyProperty;
 use App\Models\Gender;
 use App\Models\Group;
+use App\Models\Herbal;
 use App\Models\Patho;
 use App\Models\Property;
 use App\Models\Symptom;
@@ -255,6 +256,21 @@ class DatabaseRealSeeder extends Seeder
         //     $phyto = new Herbal($herbal);
         //     $phyto->save();
         // }
+
+        $herbals = [
+            ['name' => 'Ashwagandha', ],
+            ['name' => 'Aubépine',],
+            ['name' => 'Bouillon blanc'],
+            ['name' => 'Cassis MG'],
+            ['name' => 'Curcuma', ],
+            ['name' => 'Eschscholtzia']
+        ];
+
+        foreach ($herbals as $herbal)
+        {
+            $phyto = new Herbal($herbal);
+            $phyto->save();
+        }
 
         // $nutris = [
         //     ['name' => 'Calcium'],

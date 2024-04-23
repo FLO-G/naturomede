@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="form.put(route('aromas.update', form.id))">
-    <InputLabel for="name" value="Nom"/>
-    <TextInput  id="number" type="string" v-model="form.name" required/>
+    <InputLabel for="name" value="name"/>
+    <TextInput  id="name" name="name" type="string" v-model="form.name" required/>
     <br>
     <br>
     <PrimaryButton type="submit" :disabled="form.processing">
