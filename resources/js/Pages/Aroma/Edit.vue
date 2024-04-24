@@ -1,13 +1,20 @@
 <template>
+  <div class="main">
+    <div class="container">
+      
   <form @submit.prevent="form.put(route('aromas.update', form.id))">
-    <InputLabel for="name" value="name"/>
-    <TextInput  id="name" name="name" type="string" v-model="form.name" required/>
+    <InputLabel for="name" value="Nom"/>
+    <TextInput  id="number" type="string" v-model="form.name" required/>
     <br>
     <br>
+    <div class="bouton">
     <PrimaryButton type="submit" :disabled="form.processing">
       Modifier
     </PrimaryButton>
+  </div>
   </form>
+</div>
+</div>
 </template>
 
 <script lang="ts" setup>
@@ -29,5 +36,28 @@ const form = useForm({
 </script>
 
 <style scoped>
+.main{
+  height: 100vh;
+  width: 100vw;
+    background-image:url(/resources/js/assets/LogoBackground.jpg) ;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.container {
+  box-sizing:content-box ;
+   text-align: center;
+   padding: 30px;
+   height: 30vh;
+   width: 30vw;
+   border-radius: 50px;
+   backdrop-filter: blur(10px);
+   box-shadow:  20px 20px 60px #bebebe,
+              -20px -20px 60px #ffffff;
+}
 
 </style>

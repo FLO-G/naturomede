@@ -1,23 +1,40 @@
 <template>
-    <h1>{{ aroma.name }}</h1>
-      <p v-for="family in aroma.families" :key="family.id">
+  <div class="main">
+   
+  <div class="container">
+    <div class="title">
+  <h1>{{ aroma.name }}</h1>
+</div>
+<div class="prop">
+      <p v-for="family in aroma.families" :key="family">
         {{ family.name }} : {{ family.group.name }}
-        <p v-for="property in family.properties" :key="property.id">
+  
+        <p v-for="property in family.properties" :key="property">
           {{ property.name }}
         </p>
       </p>
+    </div>
+    <div class="bouton">
       <PrimaryButton @click="router.visit(route('aromas.edit', aroma.id))">
         Modifier
       </PrimaryButton>
+      <br>
+      <br>
       <PrimaryButton @click="router.delete(route('aromas.destroy', aroma.id))">
         Supprimer
       </PrimaryButton>  
+    </div>
+    </div> 
+  
+  </div>
 </template>
 
 <script lang="ts" setup>
 import type { Aroma } from '@/Models/aromas'
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, router } from '@inertiajs/vue3';
+
+
 
 const props = defineProps<{aroma: Aroma}>();
 
@@ -71,59 +88,7 @@ margin: 5%;
   
 }
 
-@media all and (max-width: 720px){
-  .container {
-     padding: 10px;
-     height: 30vh;
-     width: 50vw;
-   }
-   h1 {
-    font-size: 2em;
-  }
-  p {
-    font-size: 1em;
-  }
-}
 
-@media all and (min-width: 721px) and (max-width: 900px){
-  .container {
-    padding: 20px;
-    height: 50vh;
-    width: 50vw;
-  }
-  h1 {
-   font-size: 3em;
- }
- p {
-   font-size: 2em;
- }
-}
-
-@media all and (min-width: 901px) and (max-width: 1024px){
-  .container {
-    padding: 20px;
-    height: 55vh;
-    width: 50vw;
-  }
-  h1 {
-   font-size: 4em;
- }
- p {
-   font-size: 2em;
- }
-}
-
-@media all and (min-width: 1025px)and (max-width: 1220px){
-  .container {
-    padding: 20px;
-    height: 60vh;
-    width: 50vw;
-  }
-  h1 {
-   font-size: 4em;
- }
- p {
-   font-size: 2em;
- }
-}
 </style>
+
+

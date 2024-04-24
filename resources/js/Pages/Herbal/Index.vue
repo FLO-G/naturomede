@@ -1,8 +1,7 @@
 <template>
     <main>
-  
+      <Sidebar></Sidebar>
       <Head title="herbals" />
-      <h1>Je suis la page herbal</h1>
       <br>
       <CardLayout>
   
