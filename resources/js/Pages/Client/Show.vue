@@ -1,18 +1,25 @@
 <template>
-    <h1>{{client.firstname}} {{ client.lastname }}</h1>
-     
-      <PrimaryButton @click="router.visit(route('clients.edit', client.id))">
-        Modifier
-      </PrimaryButton>
-      <PrimaryButton @click="router.delete(route('clients.destroy', client.id))">
-        Supprimer
-      </PrimaryButton>  
+  <main>
+    <div class="container">
+      <h1>{{client.firstname}} {{ client.lastname }}</h1>
+
+        <div class="buttons-container">
+        <PrimaryButton @click="router.visit(route('clients.edit', client.id))">
+          Modifier
+        </PrimaryButton>
+        <PrimaryButton @click="router.delete(route('clients.destroy', client.id))">
+          Supprimer
+        </PrimaryButton>
+        </div>
+   </div>
+    </main>
 </template>
 
+
 <script lang="ts" setup>
-import type { Client } from '@/Models/clients'
+import type { Client } from '@/Models/Client'
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { Head, router } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
 
 
 const props = defineProps<{client: Client
@@ -29,5 +36,99 @@ const props = defineProps<{client: Client
 </script>
 
 <style scoped>
+main{
+  height: 100vh;
+  width: 100vw;
+    background-image:url(/resources/js/assets/LogoBackground.jpg) ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+
+
+.container {
+ box-sizing: border-box;
+  text-align: center;
+  padding: 30px;
+  height: 70vh;
+  width: 30vw;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
+}
+
+h1 {
+  font-size: 3rem;
+  
+}
+p {
+  font-size: 2rem;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+@media all and (max-width: 720px){
+  .container {
+     padding: 10px;
+     height: 30vh;
+     width: 50vw;
+   }
+   h1 {
+    font-size: 2em;
+  }
+  p {
+    font-size: 1em;
+  }
+}
+
+@media all and (min-width: 721px) and (max-width: 900px){
+  .container {
+    padding: 20px;
+    height: 50vh;
+    width: 50vw;
+  }
+  h1 {
+   font-size: 3em;
+ }
+ p {
+   font-size: 2em;
+ }
+}
+
+@media all and (min-width: 901px) and (max-width: 1024px){
+  .container {
+    padding: 20px;
+    height: 55vh;
+    width: 50vw;
+  }
+  h1 {
+   font-size: 4em;
+ }
+ p {
+   font-size: 2em;
+ }
+}
+
+@media all and (min-width: 1025px)and (max-width: 1220px){
+  .container {
+    padding: 20px;
+    height: 60vh;
+    width: 50vw;
+  }
+  h1 {
+   font-size: 4em;
+ }
+ p {
+   font-size: 2em;
+ }
+}
 </style>

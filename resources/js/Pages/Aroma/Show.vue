@@ -1,4 +1,6 @@
 <template>
+    <main>
+      <div class="container">
     <h1>{{ aroma.name }}</h1>
       <p v-for="family in aroma.families" :key="family.id">
         {{ family.name }} : {{ family.group.name }}
@@ -6,18 +8,24 @@
           {{ property.name }}
         </p>
       </p>
+      <div class="buttons-container">
       <PrimaryButton @click="router.visit(route('aromas.edit', aroma.id))">
         Modifier
       </PrimaryButton>
       <PrimaryButton @click="router.delete(route('aromas.destroy', aroma.id))">
         Supprimer
-      </PrimaryButton>  
+      </PrimaryButton>
+      </div>
+
+
+      </div>
+    </main>
 </template>
 
 <script lang="ts" setup>
 import type { Aroma } from '@/Models/aromas'
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { Head, router } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
 
 const props = defineProps<{aroma: Aroma}>();
 
@@ -32,16 +40,16 @@ const props = defineProps<{aroma: Aroma}>();
 </script>
 
 <style scoped>
-.main{
+main{
   height: 100vh;
   width: 100vw;
     background-image:url(/resources/js/assets/LogoBackground.jpg) ;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
     display: flex;
     justify-content: center;
     align-items: center;
-   
 }
 
 
@@ -59,17 +67,18 @@ const props = defineProps<{aroma: Aroma}>();
 }
 
 h1 {
-  font-size: 5em;
+  font-size: 3rem;
   
 }
 p {
-  font-size: 2em;
+  font-size: 2rem;
 }
 
-.bouton {
-margin: 5%;
-  
+.buttons-container {
+  display: flex;
+  justify-content: space-evenly;
 }
+
 
 @media all and (max-width: 720px){
   .container {
@@ -127,3 +136,5 @@ margin: 5%;
  }
 }
 </style>
+
+
