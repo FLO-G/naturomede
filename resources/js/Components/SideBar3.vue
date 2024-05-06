@@ -1,18 +1,22 @@
 <template>
-
-
-
         <div @click="showSideBar = !showSideBar" class="burger-menu">
             <span></span>
             <span></span>
             <span></span>
         </div>
 
-
     <nav v-show="showSideBar">
+
+        <!-- <div :style="{ color: showSideBar ?  'red' : 'blue', position: 'absolute', right: '0' }"@click="showSideBar = !showSideBar" class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div> -->
+
 
         <!--Logo Section of the sidebar-->
       
+        <div class="header-container">
           <header>
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -26,8 +30,10 @@
                 stroke-linejoin="round"
                 d="m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25"/>
                 </svg>
-                <h1>Naturomede</h1>
+                <span>Naturomede</span>
             </header>
+        </div>
+
         <ul>
             <li><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -124,6 +130,7 @@ import { ref } from "vue";
 
 const showSideBar = ref(true);
 
+
 </script>
 
 <style scoped>
@@ -137,16 +144,25 @@ nav {
     background-color: #1990BB;
 }
 
-header {
+.header-container {
     display: flex;
     border: 2px solid greenyellow;
-    justify-content: center;
     align-items: center;
     color: #fff;
-    height: 15%;
+    height: 20%;
+    margin-top: 20px;
 }
 
-h1 {
+header svg{
+    margin-left: 55px;
+}
+
+/* .header-container svg, span {
+    justify-content: center;
+    align-items: center;
+} */
+
+span {
     font-size: 2rem;
 }
 
@@ -187,7 +203,7 @@ ul li a, ul li svg {
     z-index: 20;
     margin: 12px;
     left: 20%;
-    top: 10%;
+    top: 5%;
 }
 
 .burger-menu span{
@@ -214,13 +230,23 @@ ul li a, ul li svg {
     width: 40px;
     height: 40px
    }
+   
+
    nav {
     width: 30vw;
-    position: absolute;
+   }
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
    }
 }
 
 @media (max-width: 600px) {
-  
+  nav, header-container {
+    width: 200px;
+  }
+
 }
 </style>

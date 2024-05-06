@@ -68,8 +68,8 @@ import SideBar3 from '@/Components/SideBar3.vue';
       background-size: contain; 
       background-position: center;
       border: 2px solid red;
-      transform: translate(+25%);
-      /* background-position-y:top; */
+      transform: translate(+35%, +5%);
+      position: fixed;
   }
   
   .main-contianer{
@@ -77,6 +77,7 @@ import SideBar3 from '@/Components/SideBar3.vue';
     border: 2px solid blue;
     width: 100vw;
     height: 100vh;
+    
   }
   
    
@@ -85,7 +86,7 @@ import SideBar3 from '@/Components/SideBar3.vue';
     flex-wrap: wrap;
     justify-content: center; 
     align-items: center;
-    
+    margin-top: 70px;
     border: 2px solid orange;
   }
   
@@ -105,12 +106,12 @@ import SideBar3 from '@/Components/SideBar3.vue';
   }
   
   h1 {
-    box-shadow:  20px 20px 60px #bebebe;
     font-size: 2rem;
     text-align: center;
     color: #41844E;
     width: 70%;
     margin: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   h2 {
     font-size: clamp(1rem, 2rem, 3rem);

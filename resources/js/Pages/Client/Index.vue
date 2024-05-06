@@ -91,6 +91,7 @@ return props.clients.filter((client) => client.firstname.concat(' ', client.last
   display: flex;
   height: 100vh;
   background-image:url(/resources/js/assets/LogoBackground.jpg);
+  overflow: hidden;
 }
 
 .searchfield{

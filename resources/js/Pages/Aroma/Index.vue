@@ -1,11 +1,13 @@
 <template>
 
   <div class="main-container">
+        <!--SIDEBAR CONTAINER-->
+      <div class="sidebar-container">
+      <SideBar3/>
+      </div>
 
-      <SideBar3></SideBar3>
-
-      <!--Reactive Searchinput-->
-    <div class="searchfield"> 
+      <!--REACTIVE SEARCH INPUT-->
+    <div class="searchfield-container"> 
       <svg xmlns="http://www.w3.org/2000/svg"
           fill="none" viewBox="0 0 24 24"
           stroke-width="1.5"
@@ -15,20 +17,18 @@
             stroke-linejoin="round"
             d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
         </svg>
-      <input v-model="search" type="text" id="searchfield" placeholder=""
-        class="block rounded-lg border-2 py-2 pl-10"> <!-- Pas de changement ici -->
+      <input v-model="search" type="text" id="searchfield" placeholder="filtrer des resultat"
+        class="">
     </div>
-      <br>
+    <br>
 
-
-
-      <main>
+  <main>
 
     <h1> Aromas </h1>
     <br>
-    <div class="content-container">
+    <body class="content-container">
       
-    <button class="add-button" name="add-button" @click="router.visit(route('aromas.create'))">
+    <button class="add-button" @click="router.visit(route('aromas.create'))">
         Ajouter
     </button>
       <br>
@@ -59,7 +59,7 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </body>
     </main>
 
   </div>
@@ -92,8 +92,12 @@ return props.aromas.filter((aroma) => aroma.name.toLowerCase().includes(search.v
   background-image:url(/resources/js/assets/LogoBackground.jpg);
 }
 
-.searchfield{
-  transform: translate(150px, 0px);
+.searchfield-container{
+  transform: translate(25vw);
+}
+
+#searchfield{
+  border-radius: 7%;
 }
 
 
@@ -123,7 +127,7 @@ content-container{
 }
 
 .add-button{
-  width: 7vw;
+  width: 50%;
   border-radius: 10%;
   padding: 10px;
   font-weight: 700; 
@@ -146,7 +150,6 @@ table, tr, td, thead{
 
 table {
   width: 25vw;
-  ;
 }
 
 table td{
@@ -157,6 +160,27 @@ font-weight: 500;
 
 tr:hover{
   background-color: #8DD257;
+}
+
+
+@media (max-width: 900px) {
+ 
+  .content-container {
+    width: 50%;
+    position: fixed;
+  }
+  main {
+    justify-content: space-around;
+  }
+  .searchfield-container{
+  transform: translate(50vw);
+}
+.add-button{
+  width: 30%;
+  border-radius: 10%;
+  padding: 10px;
+  font-weight: 700; 
+}
 }
 
 </style>
