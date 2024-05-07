@@ -9,12 +9,12 @@
         </p>
       </p>
       <div class="buttons-container">
-      <PrimaryButton @click="router.visit(route('aromas.edit', aroma.id))">
+      <button @click="router.visit(route('aromas.edit', aroma.id))">
         Modifier
-      </PrimaryButton>
-      <PrimaryButton @click="router.delete(route('aromas.destroy', aroma.id))">
+      </button>
+      <button @click="router.delete(route('aromas.destroy', aroma.id))">
         Supprimer
-      </PrimaryButton>
+      </button>
       </div>
 
 
@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import type { Aroma } from '@/Models/aromas'
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+
 import { router } from '@inertiajs/vue3';
 
 const props = defineProps<{aroma: Aroma}>();
@@ -79,6 +79,11 @@ p {
   justify-content: space-evenly;
 }
 
+button {
+  border: 2px solid orange;
+  width: 100%;
+  background-color:#9DD671;
+}
 
 @media all and (max-width: 720px){
   .container {

@@ -1,18 +1,14 @@
 <template>
-        <div @click="showSideBar = !showSideBar" class="burger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="burger-menu-wrapper">
+            <div :class="{ 'sidebar-open': showSideBar }"  @click="showSideBar = !showSideBar" class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
 
+
     <nav v-show="showSideBar">
-
-        <!-- <div :style="{ color: showSideBar ?  'red' : 'blue', position: 'absolute', right: '0' }"@click="showSideBar = !showSideBar" class="burger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div> -->
-
 
         <!--Logo Section of the sidebar-->
       
@@ -119,13 +115,15 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
-              </svg><a href="">Logout</a></li>
+              </svg>
+              <a><Link href="/logout" method="post" as="button" type="button">Logout</Link></a>
+            </li>
         </ul>
     </nav>
 </template>
 
 <script lang="ts" setup>
-
+import { Link } from '@inertiajs/vue3';
 import { ref } from "vue";
 
 const showSideBar = ref(true);
@@ -138,37 +136,42 @@ const showSideBar = ref(true);
 nav {
     border: 2px solid black;
     width: 20vw;
-    position: fixed;
+    position: relative;
     z-index: 10;
     height: 100vh;
     background-color: #1990BB;
+    transition-duration: 300;
 }
 
-.header-container {
+.burger-menu.sidebar-open {
+   transform: translateX(20vw);
+   transition-duration: 300;
+}
+
+.header-container, header {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: 2px solid greenyellow;
     align-items: center;
     color: #fff;
     height: 20%;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-header svg{
-    margin-left: 55px;
+header {
+    flex: 1;
+    object-fit: fill;
 }
-
-/* .header-container svg, span {
-    justify-content: center;
-    align-items: center;
-} */
 
 span {
-    font-size: 2rem;
+    font-size: 1.8em;
 }
 
 ul {
     border: 2px solid red;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,26 +193,28 @@ ul li:hover{
     border-radius: 5%;
 }
 
-ul li a, ul li svg {
+ul li a, ul li svg, Link {
     color: #fff;
 }
 
+.burger-menu-wrapper{
+    position: relative;
+}
+
 .burger-menu{
-    border: 2px solid orange;
+    border: 2px solid #6AC5E7;
     height: 40px;
     width: 40px;
     position: absolute;
-    margin-right: auto;
     z-index: 20;
     margin: 12px;
-    left: 20%;
     top: 5%;
 }
 
 .burger-menu span{
     height: 5px;
     width: 100%;
-    background-color: blue;
+    background-color:  #1990BB;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -223,30 +228,63 @@ ul li a, ul li svg {
     top: 75%;
 }
 
+
 @media (max-width: 900px) {
    .burger-menu {
     display: flex;
     position: absolute;
     width: 40px;
-    height: 40px
+    height: 40px;
    }
-   
+
+   .burger-menu.sidebar-open {
+   transform: translateX(30vw);
+   transition-duration: 300;
+    }
+
+    
+   header svg, header span {
+    font-size: 25px;
+   }
+
+   nav {
+    width: 25vw;
+   }
+
+    .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin-bottom: 20px;
+   }
+
+header {
+    width: 100%;
+}
+}
+
+@media (max-width: 600px) {
+   .burger-menu {
+    width: 40px;
+    height: 40px;
+   }
+
+   header svg, header span {
+    font-size: 25px;
+   }
+   nav {
+    width: 30vw;
+   }
+}
+
+@media (max-width: 426px) {
+   header span, header svg {
+    font-size: 15px;   }
 
    nav {
     width: 30vw;
    }
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1rem;
-   }
 }
 
-@media (max-width: 600px) {
-  nav, header-container {
-    width: 200px;
-  }
-
-}
 </style>

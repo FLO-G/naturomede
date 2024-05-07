@@ -6,8 +6,17 @@
       <SideBar3/>
       </div>
 
-      <!--REACTIVE SEARCH INPUT-->
-    <div class="searchfield-container"> 
+     
+
+  <main>
+
+    <h1> Aromas </h1>
+    <br>
+    <body class="content-container">
+
+       <!--REACTIVE SEARCH INPUT-->
+     <div class="searchfield-container"> 
+      <label for="searchfield"></label>
       <svg xmlns="http://www.w3.org/2000/svg"
           fill="none" viewBox="0 0 24 24"
           stroke-width="1.5"
@@ -17,17 +26,10 @@
             stroke-linejoin="round"
             d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
         </svg>
-      <input v-model="search" type="text" id="searchfield" placeholder="filtrer des resultat"
-        class="">
+      <input v-model="search" type="text" id="searchfield" placeholder="rechercher">
     </div>
     <br>
 
-  <main>
-
-    <h1> Aromas </h1>
-    <br>
-    <body class="content-container">
-      
     <button class="add-button" @click="router.visit(route('aromas.create'))">
         Ajouter
     </button>
@@ -86,14 +88,17 @@ return props.aromas.filter((aroma) => aroma.name.toLowerCase().includes(search.v
 <style scoped>
 
 .main-container{
-  border: 2px solid blue;
+  border: 7px solid purple;
   display: flex;
   height: 100vh;
   background-image:url(/resources/js/assets/LogoBackground.jpg);
 }
-
+.sidebar-container{
+  position: fixed;
+}
 .searchfield-container{
-  transform: translate(25vw);
+  height: 5vh;
+  margin-bottom: 20px;
 }
 
 #searchfield{
@@ -113,12 +118,13 @@ main{
 }
 
 h1{
-  display: flex;
-  justify-content: center;
   font-weight: bold;
   font-size: 2rem;
 }
 
+label {
+  background-image: url();
+}
 
 content-container{
  display: flex;
@@ -154,7 +160,7 @@ table {
 
 table td{
 line-height: 3vw;
-padding: 7px;
+padding: 0px;
 font-weight: 500;
 }
 
@@ -164,23 +170,42 @@ tr:hover{
 
 
 @media (max-width: 900px) {
- 
+  .main-contianer {
+    left: 30%;
+    margin: 0;
+  }
   .content-container {
     width: 50%;
     position: fixed;
+    left: 40%;
+    top: 30%;
   }
   main {
     justify-content: space-around;
+    background-position: center;
   }
-  .searchfield-container{
-  transform: translate(50vw);
+  .sidebar-container{
+    width: 30%;
+    margin: 0;
+    position: fixed;
+  }
+  h1 {
+    margin: 15px;
+  }
+  #searchfield {
+    width: 100px;
+  }
 }
-.add-button{
-  width: 30%;
-  border-radius: 10%;
-  padding: 10px;
-  font-weight: 700; 
-}
+
+
+@media (max-width: 600px) {
+ main {
+  left: 10%;
+  margin: 0;
+ }
+ header svg {
+  margin: 0;
+ }
 }
 
 </style>

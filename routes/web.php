@@ -54,10 +54,11 @@ require __DIR__ . '/auth.php';
 
 
 
-
-Route::resource('aromas', AromaController::class);
-Route::resource('nutris', NutriController::class);
-Route::resource('measures', MeasureController::class);
-Route::resource('herbals', HerbalController::class);
-Route::resource('symptoms', SymptomController::class);
-Route::resource('clients', ClientController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('aromas', AromaController::class);
+    Route::resource('nutris', NutriController::class);
+    Route::resource('measures', MeasureController::class);
+    Route::resource('herbals', HerbalController::class);
+    Route::resource('symptoms', SymptomController::class);
+    Route::resource('clients', ClientController::class);
+});
