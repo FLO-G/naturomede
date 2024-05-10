@@ -6,10 +6,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\AromaController;
 use App\Http\Controllers\NutriController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HerbalController;
 use App\Http\Controllers\MeasureController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SymptomController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,10 @@ Route::get('/', function () {
     ]);
 });
 
+
+
+// Route::get('/destroy', 'AuthenticatedSessionController/destroy');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,12 +45,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('profile.logout');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
-Route::resource('aromas', AromaController::class);
-Route::resource('nutris', NutriController::class);
-Route::resource('measures', MeasureController::class);
-Route::resource('herbals', HerbalController::class);
-Route::resource('symptoms', SymptomController::class);
+
+
+
+
+Route::middleware('auth')->group(function () {
+    Route::resource('aromas', AromaController::class);
+    Route::resource('nutris', NutriController::class);
+    Route::resource('measures', MeasureController::class);
+    Route::resource('herbals', HerbalController::class);
+    Route::resource('symptoms', SymptomController::class);
+    Route::resource('clients', ClientController::class);
+});

@@ -17,9 +17,6 @@ return new class extends Migration
             $table->string('definition')->nullable();
             $table->string('cause')->nullable();
             $table->string('complication')->nullable();
-
-
-
             
         });
     }

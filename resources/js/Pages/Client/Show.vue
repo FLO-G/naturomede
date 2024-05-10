@@ -1,33 +1,29 @@
 <template>
-    <main>
-      <div class="container">
-    <h1>{{ aroma.name }}</h1>
-      <p v-for="family in aroma.families" :key="family.id">
-        {{ family.name }} : {{ family.group.name }}
-        <p v-for="property in family.properties" :key="property.id">
-          {{ property.name }}
-        </p>
-      </p>
-      <div class="buttons-container">
-      <button @click="router.visit(route('aromas.edit', aroma.id))">
-        Modifier
-      </button>
-      <button @click="router.delete(route('aromas.destroy', aroma.id))">
-        Supprimer
-      </button>
-      </div>
+  <main>
+    <div class="container">
+      <h1>{{client.firstname}} {{ client.lastname }}</h1>
 
-
-      </div>
+        <div class="buttons-container">
+        <PrimaryButton @click="router.visit(route('clients.edit', client.id))">
+          Modifier
+        </PrimaryButton>
+        <PrimaryButton @click="router.delete(route('clients.destroy', client.id))">
+          Supprimer
+        </PrimaryButton>
+        </div>
+   </div>
     </main>
 </template>
 
-<script lang="ts" setup>
-import type { Aroma } from '@/Models/aromas'
 
+<script lang="ts" setup>
+import type { Client } from '@/Models/Client'
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { router } from '@inertiajs/vue3';
 
-const props = defineProps<{aroma: Aroma}>();
+
+const props = defineProps<{client: Client
+}>();
 
 // function destroy (id) {
 //     if (confirm("Are you sure you want to Delete")) {
@@ -79,11 +75,6 @@ p {
   justify-content: space-evenly;
 }
 
-button {
-  border: 2px solid orange;
-  width: 100%;
-  background-color:#9DD671;
-}
 
 @media all and (max-width: 720px){
   .container {
@@ -141,5 +132,3 @@ button {
  }
 }
 </style>
-
-

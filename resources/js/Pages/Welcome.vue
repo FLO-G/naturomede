@@ -172,12 +172,11 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="flex block mt-4 space-between gap-28">
+            <div class="flex mt-4 space-between gap-28">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
                     <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">Se souvenir de moi</span>
                 </label>
-
                 <a :href="route('password.request')"
                     class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
 
@@ -192,11 +191,12 @@ const submit = () => {
                 </PrimaryButton>
 
                 <div class="flex gap-32 ms-2 mt-3">
-                    <a :href="route('register')"
+                <Link
+                    :href="route('register')"
                     class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 me-2 "
                 >
                     Pas encore inscrit ?
-                </a>
+                </Link>
                 </div>
             </div>
         </form>

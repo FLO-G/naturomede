@@ -26,7 +26,6 @@
                 {{ measure.name }}
                 {{ measure.description }}
                
-                 
               </td>
               <td>
                 <Button btn="edit" @click="router.visit(route('measures.edit', {measure: measure.id}))">

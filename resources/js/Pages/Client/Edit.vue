@@ -1,34 +1,44 @@
 <template>
-  <main>
-  <Head title="Create Aroma" />
-  <h1>Ajouter un Aroma : </h1>
-  <br>
-  <form @submit.prevent="form.post(route('aromas.store'))">
-    <InputLabel for="name" value="Nom"/>
-    <TextInput  id="number" type="string" v-model="form.name" required/>
-    <br>
-    <br>
-    <PrimaryButton type="submit" :disabled="form.processing">
-      Ajouter
-    </PrimaryButton>
-  </form>
-  </main>
-</template>
-
-<script lang="ts" setup>
-import InputLabel from '@/Components/InputLabel.vue'
-import TextInput from '@/Components/TextInput.vue'
-import PrimaryButton from '@/Components/PrimaryButton.vue'
-import { Head, useForm } from '@inertiajs/vue3'
-
-const form = useForm({
-  name: '',
-})
-
-</script>
-
-<style scoped>
-/* @media screen and (min-width: 400px) and (max-width: 768px) {
+    <form @submit.prevent="form.put(route('clients.update', form.id))">
+      <InputLabel for="firstname" value="Prénom"/>
+      <TextInput  id="firstname" type="string" v-model="form.firstname" required/>
+      <br>
+      <InputLabel for="lastname" value="Lastname"/>
+      <TextInput  id="lastname" type="string" v-model="form.lastname" required/>
+      <br>
+      <br>
+      <InputLabel for="email" value="email"/>
+      <TextInput  id="email" type="string" v-model="form.email" required/>
+      <br>
+      <br>
+      <PrimaryButton type="submit" :disabled="form.processing">
+        Modifier
+      </PrimaryButton>
+    </form>
+  </template>
+  
+  <script lang="ts" setup>
+  import InputLabel from '@/Components/InputLabel.vue'
+  import TextInput from '@/Components/TextInput.vue'
+  import PrimaryButton from '@/Components/PrimaryButton.vue'
+  import { useForm } from '@inertiajs/vue3'
+  import type { Client } from '@Models/Client'
+  
+  const props = defineProps<{
+    client: Client
+  }>();
+  
+  const form = useForm({
+    id: props.client.id,
+    firstname: props.client.firstname,
+    lastname: props.client.lastname,
+    email: props.client.email
+  })
+  
+  </script>
+  
+  <style scoped>
+    @media screen and (min-width: 400px) and (max-width: 768px) {
       .container {
         display: flex;
         flex-basis: 2;
@@ -40,7 +50,7 @@ const form = useForm({
         height: 100vh;
         margin: 2rem;
       }
-   } */
+    }
 
     main{
     height: 100vh;
@@ -102,4 +112,4 @@ const form = useForm({
     color: white;
     background-color: blue;
   }
-</style>
+  </style>

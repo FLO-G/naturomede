@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-
 class Aroma extends Model
 {
     use HasFactory;
@@ -16,9 +15,7 @@ class Aroma extends Model
 
     protected $fillable = ['name'];
 
-   
-
-    public function pathos(): MorphToMany
+    public function treatables(): MorphToMany
     {
         return $this->morphToMany(Patho::class, 'treatables');
     }
