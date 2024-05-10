@@ -11,15 +11,12 @@ use App\Models\Gender;
 use App\Models\Group;
 use App\Models\Herbal;
 use App\Models\HerbalProperty;
-use App\Models\MeasureHd;
+use App\Models\Measure;
 use App\Models\Nutri;
 use App\Models\Patho;
 use App\Models\Property;
 use App\Models\PropertyHb;
 use App\Models\Symptom;
-use App\Models\System;
-use App\Models\Treatable;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseRealSeeder extends Seeder
@@ -243,7 +240,7 @@ class DatabaseRealSeeder extends Seeder
 
         foreach ($measures as $measure)
         {
-            $msr = new MeasureHd($measure);
+            $msr = new Measure($measure);
             $msr->save();
         }
 

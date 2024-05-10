@@ -20,13 +20,13 @@ class Family extends Model
         return $this->belongsToMany(Aroma::class, 'aroma_families');
     }
 
-    public function group(): BelongsTo
-    {
-        return $this->belongsTo(Group::class, 'group_id');
-    }
-
     public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class, 'family_properties');
+    }
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(Group::class, 'group_id');
     }
 }
