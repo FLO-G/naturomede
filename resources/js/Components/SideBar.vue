@@ -2,14 +2,14 @@
   <div class="flex" >
 
   
-  <div class="relative flex min-h-screen " >
+  <div class="relative flex" >
     
       
       <!--Logo Section of the sidebar-->
       <div v-show="showSidebar" class="bg-cyan-600 text-cyan-100 relative" id="sidebar">
           
        
-        <div class="flex items-center space-x-2 px-4">
+        <header class="flex items-center px-4">
               <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -23,20 +23,22 @@
               d="m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25"/>
               </svg>
 
-              <span class="text-2xl text-white font-extrabold">Naturomede</span>
-          </div>
+              <!-- <img src="/resources/js/assets/LogoBackground.jpg" alt=""> -->
+
+              <h1 class="text-2xl text-white font-extrabold">Naturomede</h1>
+          </header>
 
           
          
 
           <hr>
 
-         <!--Toggle Button SideBar -->
+        
           
 
            <!--Side bar starts here-->
           <nav  class="h-full overflow-y-auto">
-              <div class="group flex items-center space-x-2 py-3 px-4 hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
+              <!-- <div class="group flex items-center space-x-2 py-3 px-4 hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
               <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -49,9 +51,9 @@
               stroke-linejoin="round"
               d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
               </svg><input id="search" placeholder="recherche" class="text-black">
-          </div>
+          </div> -->
 
-              <a href="/" class="group flex items-center space-x-2 py-3 px-4 hover:bg-cyan-700 rounded hover:text-cyan-300 transition duration-200">
+              <a href="/dashboard" class="group flex items-center py-3 px-4 hover:bg-cyan-700 rounded hover:text-cyan-300 transition duration-200">
                   <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -65,7 +67,8 @@
                   d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819"/>
                   </svg><span class="text-white group-hover:text-cyan-300">Accueil</span>
                   </a>
-              <a href="/" class="group flex items-center space-x-2 py-3 px-4 hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
+                  
+              <a href="/clients" class="group flex items-center py-3 px-4 hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
                   <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -79,7 +82,8 @@
                   d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                   </svg><span>Clients</span>
                   </a>
-              <a href="/" class="group flex items-center space-x-2 py-3 px-4  hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
+
+              <a href="/aromas" class="group flex items-center py-3 px-4  hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
                   <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -94,7 +98,7 @@
                   </svg><span class="text-white group-hover:text-cyan-300">Aroma</span>
                   </a>
 
-              <a href="/" class="group flex items-center space-x-2 py-3 px-4  hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
+              <a href="/" class="group flex items-center py-3 px-4  hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
                   <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -107,7 +111,8 @@
                   stroke-linejoin="round"
                   d="M12 10.5v6m3-3H9m4.06-7.19-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                   </svg><span class="text-white group-hover:text-cyan-300">Nutri</span></a>
-                  <a href="/" class="group flex items-center space-x-2 py-3 px-4  hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
+                  
+                  <a href="/" class="group flex items-center py-3 px-4  hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
                   <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -120,7 +125,7 @@
                   stroke-linejoin="round"
                   d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                   </svg><span class="text-white group-hover:text-cyan-300">Herbal</span></a>
-                  <a href="/" class="group flex items-center space-x-2 py-3 px-4  hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
+                  <a href="/" class="group flex items-center  py-3 px-4  hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
                   <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -134,7 +139,7 @@
                   d="M12 9v3.75m0-10.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.25-8.25-3.286Zm0 13.036h.008v.008H12v-.008Z" />
                   </svg><span class="text-white group-hover:text-cyan-300">Measure</span></a>
               
-              <a href="#" class="group flex items-center space-x-2 py-3 px-4 hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
+              <a href="" class="group flex items-center py-3 px-4 hover:bg-cyan-700 rounded  hover:text-cyan-300 transition duration-200">
               <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -146,22 +151,45 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
-              </svg><span class="text-white group-hover:text-cyan-300">Logout</span></a>
-              </nav>
+              </svg><span @click="router.visit(route('/logout'), {method: 'post'})" as="button" class="text-white group-hover:text-cyan-300">Logout</span></a>
+              <!-- <a href="logout" method="post">deco</a> -->
+ 
+            </nav>
       </div>
 
      
       
   </div>
-  <div class=" ">
+
+  <!--Toggle Button SideBar -->
+  <div class="sidebarToggleButton">
             
           <button @click="showSidebar = !showSidebar">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+  
+ 
+              <svg v-show="!showSidebar"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="text-cyan-400"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6">
+              <path stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
               </svg>
 
+              <svg v-show="showSidebar"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="text-cyan-400" viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6">
+              <path stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+              </svg>
           </button>
-
           </div>
       </div>
 </template>
@@ -170,14 +198,31 @@
 
 import { ref } from 'vue';
 
-const showSidebar = ref(false);
+import { router } from '@inertiajs/vue3';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
+const showSidebar = ref(true);
 
 </script>
 
 <style scoped>
 
+nav {
+  border: 5px solid red;
+  height: 100vh;
+  position: fixed;
+}
+
+
   
+@media all and (max-width:900px) {
+  #sidebar {
+    background-color: red;
+    width: 25vw;
+    position: fixed;
+    z-index: 10;
+  }
+}
 
 
 

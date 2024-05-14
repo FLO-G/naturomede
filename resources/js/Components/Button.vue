@@ -27,8 +27,8 @@ button {
 }
 
 .btn-delete {
-  background-color: red;
-  outline: thick double red;
+  background-color: #D4362B;
+  outline: thick double #D4362B;
 }
 
 .btn-delete:hover {
@@ -37,8 +37,8 @@ button {
 }
 
 .btn-edit {
-  background-color: blue;
-  outline: thick double blue;
+  background-color: #ECC30B;
+  outline: thick double #ECC30B;
 }
 
 .btn-edit:hover {
@@ -47,8 +47,8 @@ button {
 }
 
 .btn-add {
-  outline: thick double green;
-  background-color: green;
+  outline: thick double #2BC9D4;
+  background-color: #2BC9D4;
 }
 
 .btn-add:hover {

@@ -29,73 +29,92 @@ import { Head } from '@inertiajs/vue3';
 
 
 
-<template>  
-    <main>
+<template>
+  <div class="main-contianer">
+
+    <SideBar3></SideBar3>
+
+      <main>
+       
+        <div>
+          
+          <h1>Naturomede</h1>
+          <h2>Bonjour {{ $page.props.auth.user.name }}</h2>
       
-        <h1>Naturomede</h1>
-        <h2>Bonjour {{ $page.props.auth.user.name }}</h2>
+        
+        <div class="container">
+          <div class="item"><a href="aromas">L’Aromathérapie</a></div>
+          <div class="item"><a href="measures">Les Mesures Hygiéno-Diététique</a></div>
+          <div class="item"><a href="herbals">La Phytothérapie</a></div>
+          <div class="item"><a href="nutris">La Nutrithérapie</a></div>
+        </div>
     
-      
-      <div class="container">
-        <div class="item"><a href="aromas">L’Aromathérapie</a></div>
-        <div class="item"><a href="measures">Les Mesures Hygiéno-Diététique</a></div>
-        <div class="item"><a href="herbals">La Phytothérapie</a></div>
-        <div class="item"><a href="nutris">La Nutrithérapie</a></div>
       </div>
-  
-      
-  </main>
+    </main>
+  </div>
+ 
   </template>
   
   <script lang="ts" setup>
+
+import SideBar3 from '@/Components/SideBar3.vue';
   
   </script>
   
   <style>
-  body {
+  main {
       background-image: url('/resources/js/assets/LogoBackground.jpg');
       background-repeat: no-repeat;
       background-size: contain; 
-      background-position: center; 
-      /* background-position-y:top; */
+      background-position: center;
+      border: 2px solid red;
+      transform: translate(+35%, +5%);
+      position: fixed;
   }
   
+  .main-contianer{
+    display: flex;
+    border: 2px solid blue;
+    width: 100vw;
+    height: 100vh;
+    
+  }
   
    
   .container {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center; 
-    align-items: center; 
-    
+    align-items: center;
+    margin-top: 70px;
+    border: 2px solid orange;
   }
   
   .item {
     flex: 0 1 45%;
-    margin-bottom: 2vw;
+    margin-bottom: 2rem;
   }
   
   .item a {
     display: block;
     background-color: #45879F ;
     color: white;
-    padding: 2vw;
+    padding: 2rem;
     margin: 1rem;
     text-align: center;
     text-decoration: none;
   }
   
   h1 {
-    box-shadow:  20px 20px 60px #bebebe;
-    font-size: calc(6vw + 7px);
+    font-size: 2rem;
     text-align: center;
     color: #41844E;
     width: 70%;
     margin: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   h2 {
-    font-size: clamp(10px, 3vw, 25px);
+    font-size: clamp(1rem, 2rem, 3rem);
    ;
     color: #41844E;
   text-align: center;
