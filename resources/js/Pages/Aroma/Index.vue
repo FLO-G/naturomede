@@ -3,7 +3,7 @@
   <div class="main-container">
         <!--SIDEBAR CONTAINER-->
       <div class="sidebar-container">
-      <SideBar3/>
+      <SideBar/>
       </div>
 
      
@@ -17,15 +17,6 @@
        <!--REACTIVE SEARCH INPUT-->
      <div class="searchfield-container"> 
       <label for="searchfield"></label>
-      <svg xmlns="http://www.w3.org/2000/svg"
-          fill="none" viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6">
-          <path stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
-        </svg>
       <input v-model="search" type="text" id="searchfield" placeholder="rechercher">
     </div>
     <br>
@@ -70,9 +61,12 @@
 
 <script setup lang="ts">
 import type { Aroma } from '@/Models/aromas';
-import SideBar3 from "@/Components/SideBar3.vue";
+import SideBar from "@/Components/SideBar.vue";
 import { ref, computed } from 'vue';
 import { router } from '@inertiajs/vue3';
+// import { usePage } from '@inertiajs/vue3';
+
+// const page = usePage();
 
 
 const search = ref("");
@@ -92,6 +86,9 @@ return props.aromas.filter((aroma) => aroma.name.toLowerCase().includes(search.v
   display: flex;
   height: 100vh;
   background-image:url(/resources/js/assets/LogoBackground.jpg);
+  background-repeat: no-repeat;
+  background-size: contain; 
+  background-position: center; 
 }
 .sidebar-container{
   position: fixed;
@@ -100,12 +97,10 @@ return props.aromas.filter((aroma) => aroma.name.toLowerCase().includes(search.v
   height: 5vh;
   margin-bottom: 20px;
 }
-
 #searchfield{
   border-radius: 7%;
+  border: 2px solid #8DD257;
 }
-
-
 main{
   display: flex;
   flex-direction: column;
@@ -113,60 +108,55 @@ main{
   align-items: center;
   left:50%;
   top:50%;
-  border: 2px solid red;
   width: 100vw;
+  height: 100vh;
+  font-family: Lato;
 }
-
 h1{
   font-weight: bold;
   font-size: 2rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
-label {
-  background-image: url();
-}
-
-content-container{
- display: flex;
- justify-content: center;
- align-self: center;
-}
-
 .add-button{
   width: 50%;
   border-radius: 10%;
   padding: 10px;
-  font-weight: 700; 
+  font-weight: 700;
+  background-color:#8DD257;
+  border: 2px solid rgba(239, 157, 6, 0.947);
 }
-
-button{
-  border: 2px solid orange;
+td button{
+  border: 2px solid rgba(239, 157, 6, 0.947);
   width: 100%;
-  background-color:#9DD671;
+  background-color:#8DD257;
+  height: 100%;
+  font-weight: 700;
 }
-
 button:hover{
-  background-color: #8DD257;
+  background-color: #b3e68c;
+  cursor: pointer;
 }
-
-table, tr, td, thead{
+table {
   border: 2px solid black;
+  text-align: center;
 }
 
-
+ thead, tr {
+  border: 2px solid black;
+  text-align: center;
+}
 table {
   width: 25vw;
 }
-
 table td{
 line-height: 3vw;
 padding: 0px;
 font-weight: 500;
 }
-
 tr:hover{
-  background-color: #8DD257;
+  background-color: #b3e68c;
 }
+
 
 
 @media (max-width: 900px) {
@@ -196,8 +186,6 @@ tr:hover{
     width: 100px;
   }
 }
-
-
 @media (max-width: 600px) {
  main {
   left: 10%;
@@ -207,5 +195,4 @@ tr:hover{
   margin: 0;
  }
 }
-
 </style>

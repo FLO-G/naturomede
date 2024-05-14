@@ -2,7 +2,7 @@
 
   <div class="main-container">
 
-      <SideBar3></SideBar3>
+      <SideBar></SideBar>
 
       <!--Reactive Searchinput-->
     <div class="searchfield"> 
@@ -70,7 +70,7 @@
     <script lang="ts" setup>
     import type { Client } from '@/Models/Client';
     import { router } from '@inertiajs/vue3';
-    import SideBar3 from '@/Components/SideBar3.vue';
+    import SideBar from '@/Components/SideBar.vue';
     import { ref, computed} from 'vue';
     
     
